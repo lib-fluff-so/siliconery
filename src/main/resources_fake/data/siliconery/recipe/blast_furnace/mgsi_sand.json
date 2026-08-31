@@ -1,0 +1,14 @@
+{
+  "type": "techreborn:blast_furnace",
+  "power": 90,
+  "time": 400,
+  "heat": 1800,
+  "ingredients": [
+    { "count": 3, "ingredient": "minecraft:sand" },
+    { "count": 1, "ingredient": "minecraft:coal" }
+  ],
+  "outputs": [
+    { "id": "siliconery:mgsi", "count": 1 },
+    { "id": "siliconery:slag", "count": 1 }
+  ]
+}

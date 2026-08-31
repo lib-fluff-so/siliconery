@@ -1,25 +1,28 @@
 {
 	"schemaVersion": 1,
-	"id": "modid",
+	"id": "siliconery",
 	"version": "${version}",
-	"name": "Example Mod",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"name": "Siliconery!",
+	"description": "Idk what this *tech reborn addon* is about. Creating machines from scratch... PRIVATE",
 	"authors": [
-		"Me!"
+		"Me! Fluffy"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://foo.bar/"
 	},
-	"license": "CC0-1.0",
-	"icon": "assets/modid/icon.png",
+	"license": "IDK_WHAT_LICENSE",
+	"icon": "assets/siliconery/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.example.ExampleMod"
+			"io.mainframe.Siliconery"
 		],
 		"client": [
-			"com.example.client.ExampleModClient"
+			"io.mainframe.client.SiliconeryClient"
+		],
+		"fabric-datagen": [
+			"io.mainframe.client.SiliconeryDataGen"
 		]
 	},
 	"mixins": [

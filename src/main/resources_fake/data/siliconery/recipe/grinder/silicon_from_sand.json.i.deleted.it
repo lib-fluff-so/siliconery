@@ -1,0 +1,11 @@
+{
+  "type": "techreborn:grinder",
+  "power": 2,
+  "time": 270,
+  "ingredients": [
+    { "count": 1, "ingredient": "minecraft:sand" }
+  ],
+  "outputs": [
+    { "id": "siliconery:silicon", "count": 1 }
+  ]
+}

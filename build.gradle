@@ -9,6 +9,9 @@ repositories {
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
+
+	// Tech Reborn
+	maven { url = "https://api.modrinth.com/maven" }
 }
 
 loom {
@@ -29,6 +32,17 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+	// Energy
+	include(api("teamreborn:energy:${project.energy_version}")) {
+		transitive = false
+	}
+}
+
+fabricApi {
+	configureDataGeneration() {
+		client = true
+	}
 }
 
 processResources {

@@ -1,0 +1,21 @@
+{
+  "display": {
+    "icon": { "id": "minecraft:sand" },
+    "title": { "translate": "advancements.siliconery.root.title" },
+    "description": { "translate": "advancements.siliconery.root.description" },
+    "background": "minecraft:textures/block/sand.png",
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "has_sand": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": ["minecraft:sand"] }
+        ]
+      }
+    }
+  }
+}
