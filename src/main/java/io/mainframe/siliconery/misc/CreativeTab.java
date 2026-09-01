@@ -25,8 +25,9 @@ public class CreativeTab {
                 output.accept(Items.SLAG);
                 output.accept(Items.FORGE_HAMMER);
                 output.accept(Items.CUTTER);
+                output.accept(Items.TREETAP);
                 output.accept(Blocks.CASING.asItem());
-                for (io.mainframe.siliconery.misc.Plateable mat : io.mainframe.siliconery.misc.Plateable.values()) {
+                for (Plateable mat : Plateable.values()) {
                     output.accept(Items.PLATES.get(mat));
                     output.accept(Items.CASINGS.get(mat));
                 }

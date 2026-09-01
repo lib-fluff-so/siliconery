@@ -75,7 +75,7 @@ public class RubberLogBlock extends RotatedPillarBlock {
     protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (state.getValue(HAS_SAP) && state.getValue(CAN_TAP)
                 && hitResult.getDirection() == state.getValue(SAP_SIDE)
-                && stack.is(Items.CUTTER)) {
+                && stack.is(Items.TREETAP)) {
 
             if (!level.isClientSide()) {
                 RandomSource random = level.getRandom();
