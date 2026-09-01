@@ -1,7 +1,5 @@
 package io.mainframe.siliconery.block;
 
-import io.mainframe.siliconery.block.RubberLeavesBlock;
-import io.mainframe.siliconery.block.RubberLogBlock;
 import io.mainframe.siliconery.world.SiliconeryTreeGrowers;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;

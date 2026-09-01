@@ -1,29 +1,63 @@
+/*
+ * This file is part of TechReborn, licensed under the MIT License (MIT).
+ *
+ * Copyright (c) 2020 TechReborn
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 package io.mainframe.siliconery.block;
 
+
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ColorParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.LeavesBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import org.jspecify.annotations.NonNull;
 
 public class RubberLeavesBlock extends LeavesBlock {
-    public static final MapCodec<RubberLeavesBlock> CODEC = simpleCodec(RubberLeavesBlock::new);
+	public static final MapCodec<RubberLeavesBlock> CODEC = RecordCodecBuilder.mapCodec(
+		instance -> instance.group(propertiesCodec()).apply(instance, RubberLeavesBlock::new)
+	);
 
-    public RubberLeavesBlock(BlockBehaviour.Properties properties) {
-        super(0.1F, properties); // 0.1F — leafParticleChance, как у ванильных деревьев
-    }
+	public RubberLeavesBlock(String name) {
+		super(0.01F, BlockProperties.rubberLeaves(name));
+		FlammableBlockRegistry.getDefaultInstance().add(this, 30, 60);
+	}
 
-    @Override
-    public @NonNull MapCodec<? extends LeavesBlock> codec() {
-        return CODEC;
-    }
+	public RubberLeavesBlock(Properties settings) {
+		super(0.01F, settings);
+	}
 
-    @Override
-    protected void spawnFallingLeavesParticle(@NonNull Level level, @NonNull BlockPos pos, @NonNull RandomSource random) {
-        // ванильные деревья используют LeavesBlock.SoundType-подобную логику через ParticleUtils,
-        // проще всего скопировать поведение обычных OakLeaves — глянь в decompiled OakLeaves.java,
-        // либо просто оставить пустым (без частиц) для первой версии:
-    }
+	@Override
+	public MapCodec<RubberLeavesBlock> codec() {
+		return CODEC;
+	}
+
+	@Override
+	protected void spawnFallingLeavesParticle(Level world, BlockPos pos, RandomSource random) {
+		ColorParticleOption entityEffectParticleEffect = ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, 0xff4d6148);
+		ParticleUtils.spawnParticleBelow(world, pos, random, entityEffectParticleEffect);
+	}
 }
