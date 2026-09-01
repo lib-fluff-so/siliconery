@@ -6,6 +6,7 @@ import io.mainframe.siliconery.item.Item;
 import io.mainframe.siliconery.item.Items;
 import io.mainframe.siliconery.misc.CreativeTab;
 import io.mainframe.siliconery.recipe.RecipeSerializers;
+import io.mainframe.siliconery.world.SiliconeryFoliagePlacerTypes;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;
@@ -29,6 +30,7 @@ public class Siliconery implements ModInitializer {
 		Items.initialize();
 		Block.initialize();
 		Blocks.initialize();
+		SiliconeryFoliagePlacerTypes.initialize();
 		CreativeTab.initialize();
 		RecipeSerializers.initialize();
 		LOGGER.info("Done!");

@@ -23,15 +23,15 @@ public class SiliconeryConfiguredFeatures {
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         context.register(RUBBER_TREE, new ConfiguredFeature<>(
-            Feature.TREE,
-            new TreeConfiguration.TreeConfigurationBuilder(
-                BlockStateProvider.simple((BlockState) Blocks.RUBBER_LOG.defaultBlockState()),
-                new StraightTrunkPlacer(5, 2, 0), // высота 5-7 (base 5 + up to 2 random)
-                BlockStateProvider.simple((BlockState) Blocks.RUBBER_LEAVES.defaultBlockState()),
-                new BlobFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0), 2), // тонкая шапка радиусом 1, высотой ~2-3
-                new TwoLayersFeatureSize(1, 0, 1),
-                BlockStateProvider.simple(net.minecraft.world.level.block.Blocks.DIRT)
-            ).ignoreVines().build()
+                Feature.TREE,
+                new TreeConfiguration.TreeConfigurationBuilder(
+                        BlockStateProvider.simple((BlockState) Blocks.RUBBER_LOG.defaultBlockState()),
+                        new StraightTrunkPlacer(5, 2, 0), // baseHeight=5, heightRandA=2, heightRandB=0 — как у дуба
+                        BlockStateProvider.simple((BlockState) Blocks.RUBBER_LEAVES.defaultBlockState()),
+                        new RubberFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
+                        new TwoLayersFeatureSize(1, 0, 1),
+                        BlockStateProvider.simple(net.minecraft.world.level.block.Blocks.DIRT)
+                ).ignoreVines().build()
         ));
     }
 }
