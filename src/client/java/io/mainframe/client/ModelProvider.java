@@ -17,6 +17,7 @@ public class ModelProvider extends FabricModelProvider {
         blockModelGenerators.createTrivialCube(Blocks.CASING);
         blockModelGenerators.createTrivialCube(Blocks.RUBBER_LEAVES);
         blockModelGenerators.createTrivialCube(Blocks.RUBBER_LOG);
+        blockModelGenerators.createCrossBlock(Blocks.RUBBER_SAPLING, BlockModelGenerators.PlantType.TINTED);
     }
 
     @Override
@@ -34,6 +35,7 @@ public class ModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(Items.SLAG, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(Items.FORGE_HAMMER, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerators.generateFlatItem(Items.CUTTER, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerators.generateFlatItem(Items.TREETAP, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerators.generateFlatItem(Items.LATEX, ModelTemplates.FLAT_ITEM);
     }
 

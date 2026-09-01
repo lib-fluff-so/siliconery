@@ -41,19 +41,10 @@ public class RubberLeavesBlock extends LeavesBlock {
 		instance -> instance.group(propertiesCodec()).apply(instance, RubberLeavesBlock::new)
 	);
 
-	public RubberLeavesBlock(String name) {
-		super(0.01F, BlockProperties.rubberLeaves(name));
-		FlammableBlockRegistry.getDefaultInstance().add(this, 30, 60);
-	}
-
-	public RubberLeavesBlock(Properties settings) {
-		super(0.01F, settings);
-	}
+	public RubberLeavesBlock(Properties settings) { super(0.01F, settings); }
 
 	@Override
-	public MapCodec<RubberLeavesBlock> codec() {
-		return CODEC;
-	}
+	public MapCodec<RubberLeavesBlock> codec() { return CODEC; }
 
 	@Override
 	protected void spawnFallingLeavesParticle(Level world, BlockPos pos, RandomSource random) {

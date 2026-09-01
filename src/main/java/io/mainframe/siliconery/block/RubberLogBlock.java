@@ -43,9 +43,8 @@ public class RubberLogBlock extends RotatedPillarBlock {
         builder.add(HAS_SAP, CAN_TAP, SAP_SIDE);
     }
 
-    /** Вызывается один раз при генерации дерева. */
     public static BlockState rollSapGeneration(BlockState state, RandomSource random) {
-        if (random.nextFloat() < 0.3F) {
+        if (random.nextFloat() < 0.2F) {
             Direction[] horizontals = {Direction.NORTH, Direction.SOUTH, Direction.EAST, Direction.WEST};
             Direction side = horizontals[random.nextInt(4)];
             return state.setValue(HAS_SAP, true).setValue(CAN_TAP, true).setValue(SAP_SIDE, side);
@@ -54,9 +53,10 @@ public class RubberLogBlock extends RotatedPillarBlock {
     }
 
     @Override
-    public void setPlacedBy(Level level, BlockPos pos, BlockState state, net.minecraft.world.entity.LivingEntity placer, ItemStack stack) {
-        super.setPlacedBy(level, pos, state, placer, stack);
-        if (!level.isClientSide()) {
+    protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
+        super.onPlace(state, level, pos, oldState, movedByPiston);
+
+        if (!level.isClientSide() && !state.is(oldState.getBlock())) {
             BlockState rolled = rollSapGeneration(state, level.getRandom());
             if (rolled != state) {
                 level.setBlock(pos, rolled, 3);
