@@ -2,9 +2,12 @@ package io.mainframe.siliconery.block;
 
 import io.mainframe.siliconery.block.RubberLeavesBlock;
 import io.mainframe.siliconery.block.RubberLogBlock;
+import io.mainframe.siliconery.world.SiliconeryTreeGrowers;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
+
 import static io.mainframe.siliconery.block.Block.registerBlock;
 
 public class Blocks {
@@ -27,12 +30,12 @@ public class Blocks {
                     .isSuffocating((state, level, pos) -> false).isViewBlocking((state, level, pos) -> false)
     );
 
-    public static void initialize() { }
+    public static final net.minecraft.world.level.block.Block RUBBER_SAPLING = registerBlock(
+            BlockIds.RUBBER_SAPLING,
+            props -> new RubberSaplingBlock(SiliconeryTreeGrowers.RUBBER, props),
+            BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks()
+                    .instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)
+    );
 
-//    public static final Blocks RUBBER_SAPLING = registerBlock(
-//            BlockIds.RUBBER_SAPLING,
-//            props -> new RubberSaplingBlock(SiliconeryTreeGrowers.RUBBER, props),
-//            BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks()
-//                    .instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)
-//    );
+    public static void initialize() { }
 }

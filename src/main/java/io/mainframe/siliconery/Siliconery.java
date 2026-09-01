@@ -34,7 +34,5 @@ public class Siliconery implements ModInitializer {
 		LOGGER.info("Done!");
 	}
 
-	public static Identifier id(String path) {
-		return Identifier.fromNamespaceAndPath(MOD_ID, path);
-	}
+	public static Identifier id(String path) { return Identifier.fromNamespaceAndPath(MOD_ID, path); }
 }
