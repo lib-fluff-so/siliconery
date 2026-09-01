@@ -41,4 +41,6 @@ public class Items {
             CASINGS.put(mat, casing);
         }
     }
+
+    public static void initialize() { }
 }

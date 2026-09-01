@@ -1,7 +1,9 @@
 package io.mainframe.siliconery;
 
 import io.mainframe.siliconery.block.Block;
+import io.mainframe.siliconery.block.Blocks;
 import io.mainframe.siliconery.item.Item;
+import io.mainframe.siliconery.item.Items;
 import io.mainframe.siliconery.misc.CreativeTab;
 import io.mainframe.siliconery.recipe.RecipeSerializers;
 import net.fabricmc.api.ModInitializer;
@@ -24,7 +26,9 @@ public class Siliconery implements ModInitializer {
 		LOGGER.info("Siliconery started!");
 		LOGGER.info("Initializing...");
 		Item.initialize();
+		Items.initialize();
 		Block.initialize();
+		Blocks.initialize();
 		CreativeTab.initialize();
 		RecipeSerializers.initialize();
 		LOGGER.info("Done!");

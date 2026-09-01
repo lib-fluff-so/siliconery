@@ -27,6 +27,8 @@ public class Blocks {
                     .isSuffocating((state, level, pos) -> false).isViewBlocking((state, level, pos) -> false)
     );
 
+    public static void initialize() { }
+
 //    public static final Blocks RUBBER_SAPLING = registerBlock(
 //            BlockIds.RUBBER_SAPLING,
 //            props -> new RubberSaplingBlock(SiliconeryTreeGrowers.RUBBER, props),
