@@ -11,6 +11,7 @@ public class ItemIds {
 	public static final ResourceKey<Item> SLAG = createItemId("slag");
 	public static final ResourceKey<Item> FORGE_HAMMER = createItemId("forge_hammer");
 	public static final ResourceKey<Item> CUTTER = createItemId("cutter");
+	public static final ResourceKey<Item> TREETAP = createItemId("treetap");
 	public static final ResourceKey<Item> LATEX = createItemId("latex");
 
 	public static ResourceKey<Item> plate(String materialName) { return createItemId(materialName + "_plate"); }
