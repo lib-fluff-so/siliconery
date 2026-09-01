@@ -1,5 +1,7 @@
 package io.mainframe.client;
 
+import io.mainframe.siliconery.misc.SiliconeryLootTables;
+import io.mainframe.siliconery.misc.SiliconeryTags;
 import io.mainframe.siliconery.recipe.RecipeProvider;
 import io.mainframe.siliconery.world.SiliconeryConfiguredFeatures;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
@@ -26,6 +28,8 @@ public class SiliconeryDataGen implements DataGeneratorEntrypoint {
                 return "Siliconery Dynamic Registries";
             }
         });
+        pack.addProvider(SiliconeryLootTables::new);
+        pack.addProvider(SiliconeryTags::new);
     }
 
     @Override

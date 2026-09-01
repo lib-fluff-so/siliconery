@@ -5,6 +5,7 @@ import io.mainframe.siliconery.block.Blocks;
 import io.mainframe.siliconery.item.Item;
 import io.mainframe.siliconery.item.Items;
 import io.mainframe.siliconery.misc.CreativeTab;
+import io.mainframe.siliconery.misc.SiliconeryTags;
 import io.mainframe.siliconery.recipe.RecipeSerializers;
 import io.mainframe.siliconery.world.SiliconeryFoliagePlacerTypes;
 import net.fabricmc.api.ModInitializer;
