@@ -1,6 +1,6 @@
 {
 	"required": true,
-	"package": "io.mainframe.mixin",
+	"package": "io.mainframe.siliconery.mixin",
 	"compatibilityLevel": "JAVA_25",
 	"mixins": [
 		"ExampleMixin"

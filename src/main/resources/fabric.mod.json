@@ -16,7 +16,7 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"io.mainframe.Siliconery"
+			"io.mainframe.siliconery.Siliconery"
 		],
 		"client": [
 			"io.mainframe.client.SiliconeryClient"

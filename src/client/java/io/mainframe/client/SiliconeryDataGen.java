@@ -1,6 +1,6 @@
 package io.mainframe.client;
 
-import io.mainframe.recipes.SiliconeryRecipeProvider;
+import io.mainframe.siliconery.recipe.RecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 
@@ -9,7 +9,7 @@ public class SiliconeryDataGen implements DataGeneratorEntrypoint {
     public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 
-        pack.addProvider(SiliconeryModelProvider::new);
-        pack.addProvider(SiliconeryRecipeProvider::new);
+        pack.addProvider(ModelProvider::new);
+        pack.addProvider(RecipeProvider::new);
     }
 }
