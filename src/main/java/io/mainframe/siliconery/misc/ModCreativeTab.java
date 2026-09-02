@@ -26,6 +26,9 @@ public class ModCreativeTab {
                 output.accept(ModItemList.CUTTER);
                 output.accept(ModItemList.TREETAP);
                 output.accept(ModBlockList.CASING.asItem());
+                output.accept(ModBlockList.RUBBER_LEAVES.asItem());
+                output.accept(ModBlockList.RUBBER_LOG.asItem());
+                output.accept(ModBlockList.RUBBER_SAPLING.asItem());
                 for (ModPlateable mat : ModPlateable.values()) {
                     output.accept(ModItemList.PLATES.get(mat));
                     output.accept(ModItemList.CASINGS.get(mat));

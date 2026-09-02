@@ -12,5 +12,10 @@
   "item.siliconery.iron_casing": "Iron Casing",
   "item.siliconery.copper_plate": "Copper Plate",
   "item.siliconery.copper_casing": "Copper Casing",
+  "item.siliconery.treetap": "Treetap",
+  "item.siliconery.latex": "Latex",
+  "item.siliconery.rubber_log": "Rubber Log",
+  "item.siliconery.rubber_leaves": "Rubber Leaves",
+  "item.siliconery.rubber_sapling": "Rubber Sapling",
   "block.siliconery.casing": "Machine Casing"
 }

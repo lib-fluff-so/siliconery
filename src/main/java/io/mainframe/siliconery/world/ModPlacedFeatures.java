@@ -70,83 +70,59 @@ public class ModPlacedFeatures {
 
         context.register(
                 RUBBER_TREE_JUNGLE,
-                new PlacedFeature(
-                        rubberTree,
-                        List.of(
+                new PlacedFeature(rubberTree, List.of(
                                 RarityFilter.onAverageOnceEvery(30),
                                 InSquarePlacement.spread(),
                                 surface,
-                                BiomeFilter.biome()
-                        )
-                )
+                                BiomeFilter.biome()))
         );
 
         context.register(
                 RUBBER_TREE_JUNGLE_SECTION,
-                new PlacedFeature(
-                        rubberTree,
-                        List.of(
+                new PlacedFeature(rubberTree, List.of(
                                 RarityFilter.onAverageOnceEvery(128),
                                 CountPlacement.of(3),
                                 InSquarePlacement.spread(),
                                 surface,
-                                BiomeFilter.biome()
-                        )
-                )
+                                BiomeFilter.biome()))
         );
 
-        context.register(
-                RUBBER_TREE_SPARSE_JUNGLE,
-                new PlacedFeature(
+        context.register(RUBBER_TREE_SPARSE_JUNGLE, new PlacedFeature(
                         rubberTree,
                         List.of(
                                 RarityFilter.onAverageOnceEvery(60),
                                 InSquarePlacement.spread(),
                                 surface,
-                                BiomeFilter.biome()
-                        )
-                )
+                                BiomeFilter.biome()))
         );
 
-        context.register(
-                RUBBER_TREE_SPARSE_JUNGLE_SECTION,
-                new PlacedFeature(
+        context.register(RUBBER_TREE_SPARSE_JUNGLE_SECTION, new PlacedFeature(
                         rubberTree,
                         List.of(
                                 RarityFilter.onAverageOnceEvery(256),
                                 CountPlacement.of(3),
                                 InSquarePlacement.spread(),
                                 surface,
-                                BiomeFilter.biome()
-                        )
-                )
+                                BiomeFilter.biome()))
         );
 
-        context.register(
-                RUBBER_TREE_BAMBOO_JUNGLE,
-                new PlacedFeature(
+        context.register(RUBBER_TREE_BAMBOO_JUNGLE, new PlacedFeature(
                         rubberTree,
                         List.of(
                                 RarityFilter.onAverageOnceEvery(60),
                                 InSquarePlacement.spread(),
                                 surface,
-                                BiomeFilter.biome()
-                        )
-                )
+                                BiomeFilter.biome()))
         );
 
-        context.register(
-                RUBBER_TREE_BAMBOO_JUNGLE_SECTION,
-                new PlacedFeature(
+        context.register(RUBBER_TREE_BAMBOO_JUNGLE_SECTION, new PlacedFeature(
                         rubberTree,
                         List.of(
                                 RarityFilter.onAverageOnceEvery(256),
                                 CountPlacement.of(3),
                                 InSquarePlacement.spread(),
                                 surface,
-                                BiomeFilter.biome()
-                        )
-                )
+                                BiomeFilter.biome()))
         );
     }
 }
