@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec;
 import io.mainframe.siliconery.Siliconery;
 import io.mainframe.siliconery.block.ModBlockList;
 import io.mainframe.siliconery.block.rubber.ModBlockRubberLog;
+import io.mainframe.siliconery.world.Config;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -34,7 +35,7 @@ public class ModRubberSapDecorator extends TreeDecorator {
                 continue;
             }
 
-            if (random.nextFloat() >= 0.2F) {
+            if (random.nextFloat() >= Config.RubberLog.RUBBER_SAP_SPAWN_CHANCE) {
                 continue;
             }
 

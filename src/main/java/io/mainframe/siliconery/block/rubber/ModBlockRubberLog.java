@@ -1,6 +1,7 @@
 package io.mainframe.siliconery.block.rubber;
 
 import io.mainframe.siliconery.item.ModItemList;
+import io.mainframe.siliconery.world.Config;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -21,11 +22,9 @@ import net.minecraft.world.phys.BlockHitResult;
 import org.jspecify.annotations.NonNull;
 
 public class ModBlockRubberLog extends RotatedPillarBlock {
-    public static final BooleanProperty HAS_SAP =
-            BooleanProperty.create("has_sap");
+    public static final BooleanProperty HAS_SAP = BooleanProperty.create("has_sap");
 
-    public static final BooleanProperty CAN_TAP =
-            BooleanProperty.create("can_tap");
+    public static final BooleanProperty CAN_TAP = BooleanProperty.create("can_tap");
 
     public static final EnumProperty<Direction> SAP_SIDE =
             EnumProperty.create(
@@ -36,9 +35,6 @@ public class ModBlockRubberLog extends RotatedPillarBlock {
                     Direction.EAST,
                     Direction.WEST
             );
-
-    private static final int MIN_REGEN_TICKS = 1200;
-    private static final int MAX_REGEN_TICKS = 2400;
 
     public ModBlockRubberLog(Properties properties) {
         super(properties);
@@ -67,14 +63,8 @@ public class ModBlockRubberLog extends RotatedPillarBlock {
             @NonNull BlockPos pos,
             @NonNull RandomSource random
     ) {
-        if (state.getValue(HAS_SAP)
-                && !state.getValue(CAN_TAP)) {
-
-            level.setBlock(
-                    pos,
-                    state.setValue(CAN_TAP, true),
-                    3
-            );
+        if (state.getValue(HAS_SAP) && !state.getValue(CAN_TAP)) {
+            level.setBlock(pos, state.setValue(CAN_TAP, true), 3);
         }
     }
 
@@ -96,7 +86,7 @@ public class ModBlockRubberLog extends RotatedPillarBlock {
             if (!level.isClientSide()) {
                 RandomSource random = level.getRandom();
 
-                int amount = 1 + random.nextInt(4);
+                int amount = 1 + random.nextInt(Config.RubberLog.MAX_LATEX_RANDOM_BONUS);
 
                 ItemEntity latex = new ItemEntity(
                         level,
@@ -108,40 +98,18 @@ public class ModBlockRubberLog extends RotatedPillarBlock {
 
                 level.addFreshEntity(latex);
 
-                if (random.nextFloat() < 0.05F) {
-                    level.setBlock(
-                            pos,
-                            state
-                                    .setValue(HAS_SAP, false)
-                                    .setValue(CAN_TAP, false),
-                            3
-                    );
+                if (random.nextFloat() < Config.RubberLog.SAP_EXHAUSTION_CHANCE) {
+                    level.setBlock(pos, state.setValue(HAS_SAP, false).setValue(CAN_TAP, false), 3);
                 } else {
-                    level.setBlock(
-                            pos,
-                            state.setValue(CAN_TAP, false),
-                            3
-                    );
+                    level.setBlock(pos, state.setValue(CAN_TAP, false), 3);
 
-                    int delay =
-                            MIN_REGEN_TICKS +
-                                    random.nextInt(
-                                            MAX_REGEN_TICKS -
-                                                    MIN_REGEN_TICKS
-                                    );
+                    int delay = Config.RubberLog.MIN_REGEN_TICKS +
+                            random.nextInt(Config.RubberLog.MAX_REGEN_TICKS - Config.RubberLog.MIN_REGEN_TICKS);
 
-                    level.scheduleTick(
-                            pos,
-                            this,
-                            delay
-                    );
+                    level.scheduleTick(pos, this, delay);
                 }
 
-                stack.hurtAndBreak(
-                        1,
-                        player,
-                        EquipmentSlot.MAINHAND
-                );
+                stack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
             }
 
             return InteractionResult.SUCCESS;

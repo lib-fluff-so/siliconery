@@ -26,31 +26,18 @@ public class SiliconeryDataGen implements DataGeneratorEntrypoint {
         pack.addProvider(ModRecipeProvider::new);
 
         pack.addProvider((output, registriesFuture) ->
-                new FabricDynamicRegistryProvider(
-                        output,
-                        registriesFuture
-                ) {
+                new FabricDynamicRegistryProvider(output, registriesFuture) {
                     @Override
                     protected void configure(
                             net.minecraft.core.HolderLookup.@NonNull Provider registries,
-                            @NonNull Entries entries
-                    ) {
-                        entries.addAll(
-                                registries.lookupOrThrow(
-                                        Registries.CONFIGURED_FEATURE
-                                )
-                        );
-
-                        entries.addAll(
-                                registries.lookupOrThrow(
-                                        Registries.PLACED_FEATURE
-                                )
-                        );
+                            @NonNull Entries entries) {
+                        entries.addAll(registries.lookupOrThrow(Registries.CONFIGURED_FEATURE));
+                        entries.addAll(registries.lookupOrThrow(Registries.PLACED_FEATURE));
                     }
 
                     @Override
                     public @NonNull String getName() {
-                        return "Siliconery Dynamic Registries";
+                        return "Dynamic Registries";
                     }
                 }
         );

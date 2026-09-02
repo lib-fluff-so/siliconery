@@ -59,7 +59,5 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     }
 
     @Override
-    public @NonNull String getName() {
-        return "Siliconery Recipes";
-    }
+    public @NonNull String getName() { return "Recipes"; }
 }

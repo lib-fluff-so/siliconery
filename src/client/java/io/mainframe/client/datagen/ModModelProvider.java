@@ -25,8 +25,6 @@ public class ModModelProvider extends FabricModelProvider {
         for (ModPlateable mat : ModPlateable.values()) {
             net.minecraft.world.item.Item plate = ModItemList.PLATES.get(mat);
             itemModelGenerators.generateFlatItem(plate, ModelTemplates.FLAT_ITEM);
-        }
-        for (ModPlateable mat : ModPlateable.values()) {
             net.minecraft.world.item.Item casing = ModItemList.CASINGS.get(mat);
             itemModelGenerators.generateFlatItem(casing, ModelTemplates.FLAT_ITEM);
         }
@@ -39,8 +37,5 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItemList.LATEX, ModelTemplates.FLAT_ITEM);
     }
 
-    @Override
-    public @NonNull String getName() {
-        return "Siliconery Models";
-    }
+    @Override public @NonNull String getName() { return "Models"; }
 }

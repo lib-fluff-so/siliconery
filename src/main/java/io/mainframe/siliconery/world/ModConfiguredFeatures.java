@@ -27,33 +27,17 @@ public class ModConfiguredFeatures {
             BootstrapContext<ConfiguredFeature<?, ?>> context
     ) {
         context.register(
-                RUBBER_TREE,
-                new ConfiguredFeature<>(
-                        Feature.TREE,
-                        new TreeConfiguration.TreeConfigurationBuilder(
-                                BlockStateProvider.simple(
-                                        ModBlockList.RUBBER_LOG.defaultBlockState()
-                                ),
-                                new StraightTrunkPlacer(5, 2, 0),
-                                BlockStateProvider.simple(
-                                        ModBlockList.RUBBER_LEAVES.defaultBlockState()
-                                ),
-                                new ModRubberFoliagePlacer(
-                                        ConstantInt.of(2),
-                                        ConstantInt.of(0),
-                                        3
-                                ),
-                                new TwoLayersFeatureSize(1, 0, 1),
-                                BlockStateProvider.simple(
-                                        net.minecraft.world.level.block.Blocks.DIRT.defaultBlockState()
-                                )
-                        )
-                        .decorators(List.of(
-                                new ModRubberSapDecorator()
-                        ))
-                        .ignoreVines()
-                        .build()
-                )
+            RUBBER_TREE,
+            new ConfiguredFeature<>(Feature.TREE,
+                    new TreeConfiguration.TreeConfigurationBuilder(
+                            BlockStateProvider.simple(ModBlockList.RUBBER_LOG.defaultBlockState()),
+                            new StraightTrunkPlacer(5, 2, 0),
+                            BlockStateProvider.simple(ModBlockList.RUBBER_LEAVES.defaultBlockState()),
+                            new ModRubberFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
+                            new TwoLayersFeatureSize(1, 0, 1),
+                            BlockStateProvider.simple(net.minecraft.world.level.block.Blocks.DIRT.defaultBlockState())
+                    ).decorators(List.of(new ModRubberSapDecorator())).ignoreVines().build()
+            )
         );
     }
 }

@@ -29,4 +29,6 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         builder(BlockTags.OVERWORLD_NATURAL_LOGS)
                 .add(ModBlockItemIds.RUBBER_LOG);
     }
+
+    @Override public @NonNull String getName() { return "Block Tags"; }
 }

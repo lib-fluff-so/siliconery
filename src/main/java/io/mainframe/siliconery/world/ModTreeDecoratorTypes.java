@@ -9,6 +9,7 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorTy
 public class ModTreeDecoratorTypes {
 
     // Is it even needed?
+    @SuppressWarnings("unused")
     public static final TreeDecoratorType<ModRubberSapDecorator> RUBBER_SAP =
             Registry.register(
                     BuiltInRegistries.TREE_DECORATOR_TYPE,
