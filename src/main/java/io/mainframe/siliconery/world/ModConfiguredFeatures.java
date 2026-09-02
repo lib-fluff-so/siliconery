@@ -1,6 +1,8 @@
 package io.mainframe.siliconery.world;
 
-import io.mainframe.siliconery.block.Blocks;
+import io.mainframe.siliconery.block.ModBlockList;
+import io.mainframe.siliconery.world.rubber.ModRubberFoliagePlacer;
+import io.mainframe.siliconery.world.rubber.ModRubberSapDecorator;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
@@ -14,8 +16,7 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlac
 
 import java.util.List;
 
-public class SiliconeryConfiguredFeatures {
-
+public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> RUBBER_TREE =
             ResourceKey.create(
                     Registries.CONFIGURED_FEATURE,
@@ -31,13 +32,13 @@ public class SiliconeryConfiguredFeatures {
                         Feature.TREE,
                         new TreeConfiguration.TreeConfigurationBuilder(
                                 BlockStateProvider.simple(
-                                        Blocks.RUBBER_LOG.defaultBlockState()
+                                        ModBlockList.RUBBER_LOG.defaultBlockState()
                                 ),
                                 new StraightTrunkPlacer(5, 2, 0),
                                 BlockStateProvider.simple(
-                                        Blocks.RUBBER_LEAVES.defaultBlockState()
+                                        ModBlockList.RUBBER_LEAVES.defaultBlockState()
                                 ),
-                                new RubberFoliagePlacer(
+                                new ModRubberFoliagePlacer(
                                         ConstantInt.of(2),
                                         ConstantInt.of(0),
                                         3
@@ -48,7 +49,7 @@ public class SiliconeryConfiguredFeatures {
                                 )
                         )
                         .decorators(List.of(
-                                new RubberSapDecorator()
+                                new ModRubberSapDecorator()
                         ))
                         .ignoreVines()
                         .build()

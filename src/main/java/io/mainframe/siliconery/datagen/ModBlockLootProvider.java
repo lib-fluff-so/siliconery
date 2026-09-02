@@ -1,14 +1,14 @@
-package io.mainframe.siliconery.misc;
+package io.mainframe.siliconery.datagen;
 
-import io.mainframe.siliconery.block.Blocks;
+import io.mainframe.siliconery.block.ModBlockList;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
 import net.minecraft.core.HolderLookup;
 
 import java.util.concurrent.CompletableFuture;
 
-public class SiliconeryLootTables extends FabricBlockLootSubProvider {
-    public SiliconeryLootTables(
+public class ModBlockLootProvider extends FabricBlockLootSubProvider {
+    public ModBlockLootProvider(
             FabricPackOutput output,
             CompletableFuture<HolderLookup.Provider> registries
     ) {
@@ -17,13 +17,13 @@ public class SiliconeryLootTables extends FabricBlockLootSubProvider {
 
     @Override
     public void generate() {
-        dropSelf(Blocks.CASING);
-        dropSelf(Blocks.RUBBER_LOG);
-        dropSelf(Blocks.RUBBER_SAPLING);
-        add(Blocks.RUBBER_LEAVES,
+        dropSelf(ModBlockList.CASING);
+        dropSelf(ModBlockList.RUBBER_LOG);
+        dropSelf(ModBlockList.RUBBER_SAPLING);
+        add(ModBlockList.RUBBER_LEAVES,
                 createLeavesDrops(
-                        Blocks.RUBBER_LEAVES,
-                        Blocks.RUBBER_SAPLING,
+                        ModBlockList.RUBBER_LEAVES,
+                        ModBlockList.RUBBER_SAPLING,
                         NORMAL_LEAVES_SAPLING_CHANCES
                 ));
     }

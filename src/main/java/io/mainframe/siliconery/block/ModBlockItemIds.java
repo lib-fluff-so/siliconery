@@ -2,9 +2,9 @@ package io.mainframe.siliconery.block;
 
 import net.minecraft.references.BlockItemId;
 
-import static io.mainframe.siliconery.block.Block.createBlockItemId;
+import static io.mainframe.siliconery.block.ModBlockTools.createBlockItemId;
 
-public class BlockIds {
+public class ModBlockItemIds {
     public static final BlockItemId CASING = createBlockItemId("casing");
     public static final BlockItemId RUBBER_LOG = createBlockItemId("rubber_log");
     public static final BlockItemId RUBBER_LEAVES = createBlockItemId("rubber_leaves");

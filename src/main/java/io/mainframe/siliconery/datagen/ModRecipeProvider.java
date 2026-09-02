@@ -1,13 +1,14 @@
-package io.mainframe.siliconery.recipe;
+package io.mainframe.siliconery.datagen;
 
-import io.mainframe.siliconery.misc.Plateable;
-import io.mainframe.siliconery.item.Items;
+import io.mainframe.siliconery.Siliconery;
+import io.mainframe.siliconery.misc.ModPlateable;
+import io.mainframe.siliconery.item.ModItemList;
+import io.mainframe.siliconery.recipe.ModRecipeItemTool;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -15,8 +16,8 @@ import org.jspecify.annotations.NonNull;
 
 import java.util.concurrent.CompletableFuture;
 
-public class RecipeProvider extends FabricRecipeProvider {
-    public RecipeProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+public class ModRecipeProvider extends FabricRecipeProvider {
+    public ModRecipeProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }
 
@@ -25,12 +26,12 @@ public class RecipeProvider extends FabricRecipeProvider {
         return new net.minecraft.data.recipes.RecipeProvider(registries, output) {
             @Override
             public void buildRecipes() {
-                for (Plateable mat : Plateable.values()) {
-                    net.minecraft.world.item.Item plate = Items.PLATES.get(mat);
+                for (ModPlateable mat : ModPlateable.values()) {
+                    net.minecraft.world.item.Item plate = ModItemList.PLATES.get(mat);
                     output.accept(
-                            ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("siliconery", mat.name + "_plate_from_hammer")),
-                            new RecipeItemTool(
-                                    Ingredient.of(Items.FORGE_HAMMER),
+                            ResourceKey.create(Registries.RECIPE, Siliconery.id(mat.name + "_plate_from_hammer")),
+                            new ModRecipeItemTool(
+                                    Ingredient.of(ModItemList.FORGE_HAMMER),
                                     Ingredient.of(mat.ingotInput),
                                     new ItemStackTemplate(plate),
                                     1
@@ -38,14 +39,14 @@ public class RecipeProvider extends FabricRecipeProvider {
                             null
                     );
                 }
-                for (Plateable mat : Plateable.values()) {
-                    net.minecraft.world.item.Item plate = Items.PLATES.get(mat);
-                    net.minecraft.world.item.Item casing = Items.CASINGS.get(mat);
+                for (ModPlateable mat : ModPlateable.values()) {
+                    net.minecraft.world.item.Item plate = ModItemList.PLATES.get(mat);
+                    net.minecraft.world.item.Item casing = ModItemList.CASINGS.get(mat);
 
                     output.accept(
-                            ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath("siliconery", mat.name + "_casing_from_hammer")),
-                            new RecipeItemTool(
-                                    Ingredient.of(Items.FORGE_HAMMER),
+                            ResourceKey.create(Registries.RECIPE, Siliconery.id(mat.name + "_casing_from_hammer")),
+                            new ModRecipeItemTool(
+                                    Ingredient.of(ModItemList.FORGE_HAMMER),
                                     Ingredient.of(plate),
                                     new ItemStackTemplate(casing, 2),
                                     2

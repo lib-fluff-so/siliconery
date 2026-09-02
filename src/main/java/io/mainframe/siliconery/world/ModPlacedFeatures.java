@@ -18,7 +18,7 @@ import java.util.List;
 
 import static io.mainframe.siliconery.Siliconery.id;
 
-public class SiliconeryPlacedFeatures {
+public class ModPlacedFeatures {
 
     public static final ResourceKey<PlacedFeature> RUBBER_TREE_JUNGLE =
             ResourceKey.create(
@@ -60,7 +60,7 @@ public class SiliconeryPlacedFeatures {
         Holder<ConfiguredFeature<?, ?>> rubberTree =
                 context.lookup(Registries.CONFIGURED_FEATURE)
                         .getOrThrow(
-                                SiliconeryConfiguredFeatures.RUBBER_TREE
+                                ModConfiguredFeatures.RUBBER_TREE
                         );
 
         PlacementModifier surface =

@@ -1,9 +1,9 @@
-package io.mainframe.siliconery.world;
+package io.mainframe.siliconery.world.rubber;
 
 import com.mojang.serialization.MapCodec;
 import io.mainframe.siliconery.Siliconery;
-import io.mainframe.siliconery.block.Blocks;
-import io.mainframe.siliconery.block.RubberLogBlock;
+import io.mainframe.siliconery.block.ModBlockList;
+import io.mainframe.siliconery.block.rubber.ModBlockRubberLog;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -11,13 +11,16 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
+import org.jspecify.annotations.NonNull;
 
-public class RubberSapDecorator extends TreeDecorator {
+import java.util.Objects;
 
-    public static final MapCodec<RubberSapDecorator> CODEC =
-            MapCodec.unit(RubberSapDecorator::new);
+public class ModRubberSapDecorator extends TreeDecorator {
 
-    public RubberSapDecorator() {
+    public static final MapCodec<ModRubberSapDecorator> CODEC =
+            MapCodec.unit(ModRubberSapDecorator::new);
+
+    public ModRubberSapDecorator() {
     }
 
     @Override
@@ -27,7 +30,7 @@ public class RubberSapDecorator extends TreeDecorator {
         for (BlockPos pos : context.logs()) {
             BlockState state = context.level().getBlockState(pos);
 
-            if (!state.is(Blocks.RUBBER_LOG)) {
+            if (!state.is(ModBlockList.RUBBER_LOG)) {
                 continue;
             }
 
@@ -47,17 +50,17 @@ public class RubberSapDecorator extends TreeDecorator {
             context.setBlock(
                     pos,
                     state
-                            .setValue(RubberLogBlock.HAS_SAP, true)
-                            .setValue(RubberLogBlock.CAN_TAP, true)
-                            .setValue(RubberLogBlock.SAP_SIDE, side)
+                            .setValue(ModBlockRubberLog.HAS_SAP, true)
+                            .setValue(ModBlockRubberLog.CAN_TAP, true)
+                            .setValue(ModBlockRubberLog.SAP_SIDE, side)
             );
         }
     }
 
     @Override
-    protected TreeDecoratorType<?> type() {
-        return BuiltInRegistries.TREE_DECORATOR_TYPE.getValue(
+    protected @NonNull TreeDecoratorType<?> type() {
+        return Objects.requireNonNull(BuiltInRegistries.TREE_DECORATOR_TYPE.getValue(
                 Siliconery.id("rubber_sap")
-        );
+        ));
     }
 }

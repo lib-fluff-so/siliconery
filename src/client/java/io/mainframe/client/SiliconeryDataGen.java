@@ -1,15 +1,17 @@
 package io.mainframe.client;
 
-import io.mainframe.siliconery.misc.SiliconeryLootTables;
-import io.mainframe.siliconery.misc.SiliconeryTags;
-import io.mainframe.siliconery.recipe.RecipeProvider;
-import io.mainframe.siliconery.world.SiliconeryConfiguredFeatures;
-import io.mainframe.siliconery.world.SiliconeryPlacedFeatures;
+import io.mainframe.client.datagen.ModModelProvider;
+import io.mainframe.siliconery.datagen.ModBlockLootProvider;
+import io.mainframe.siliconery.datagen.ModBlockTagsProvider;
+import io.mainframe.siliconery.datagen.ModRecipeProvider;
+import io.mainframe.siliconery.world.ModConfiguredFeatures;
+import io.mainframe.siliconery.world.ModPlacedFeatures;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
+import org.jspecify.annotations.NonNull;
 
 public class SiliconeryDataGen implements DataGeneratorEntrypoint {
 
@@ -20,8 +22,8 @@ public class SiliconeryDataGen implements DataGeneratorEntrypoint {
         FabricDataGenerator.Pack pack =
                 fabricDataGenerator.createPack();
 
-        pack.addProvider(ModelProvider::new);
-        pack.addProvider(RecipeProvider::new);
+        pack.addProvider(ModModelProvider::new);
+        pack.addProvider(ModRecipeProvider::new);
 
         pack.addProvider((output, registriesFuture) ->
                 new FabricDynamicRegistryProvider(
@@ -30,8 +32,8 @@ public class SiliconeryDataGen implements DataGeneratorEntrypoint {
                 ) {
                     @Override
                     protected void configure(
-                            net.minecraft.core.HolderLookup.Provider registries,
-                            Entries entries
+                            net.minecraft.core.HolderLookup.@NonNull Provider registries,
+                            @NonNull Entries entries
                     ) {
                         entries.addAll(
                                 registries.lookupOrThrow(
@@ -47,14 +49,14 @@ public class SiliconeryDataGen implements DataGeneratorEntrypoint {
                     }
 
                     @Override
-                    public String getName() {
+                    public @NonNull String getName() {
                         return "Siliconery Dynamic Registries";
                     }
                 }
         );
 
-        pack.addProvider(SiliconeryLootTables::new);
-        pack.addProvider(SiliconeryTags::new);
+        pack.addProvider(ModBlockLootProvider::new);
+        pack.addProvider(ModBlockTagsProvider::new);
     }
 
     @Override
@@ -63,12 +65,12 @@ public class SiliconeryDataGen implements DataGeneratorEntrypoint {
     ) {
         registryBuilder.add(
                 Registries.CONFIGURED_FEATURE,
-                SiliconeryConfiguredFeatures::bootstrap
+                ModConfiguredFeatures::bootstrap
         );
 
         registryBuilder.add(
                 Registries.PLACED_FEATURE,
-                SiliconeryPlacedFeatures::bootstrap
+                ModPlacedFeatures::bootstrap
         );
     }
 }

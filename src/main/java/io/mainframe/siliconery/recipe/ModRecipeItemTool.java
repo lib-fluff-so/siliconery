@@ -5,16 +5,17 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
+import org.jspecify.annotations.NonNull;
 
 import java.util.List;
 
-public class RecipeItemTool implements CraftingRecipe {
+public class ModRecipeItemTool implements CraftingRecipe {
     final Ingredient toolIngredient;
     final Ingredient inputIngredient;
     final ItemStackTemplate result;
     final int toolDamage;
 
-    public RecipeItemTool(Ingredient toolIngredient, Ingredient inputIngredient, ItemStackTemplate result, int toolDamage) {
+    public ModRecipeItemTool(Ingredient toolIngredient, Ingredient inputIngredient, ItemStackTemplate result, int toolDamage) {
         this.toolIngredient = toolIngredient;
         this.inputIngredient = inputIngredient;
         this.result = result;
@@ -22,7 +23,7 @@ public class RecipeItemTool implements CraftingRecipe {
     }
 
     @Override
-    public boolean matches(CraftingInput input, Level level) {
+    public boolean matches(CraftingInput input, @NonNull Level level) {
         boolean hasTool = false;
         boolean hasInput = false;
         for (int i = 0; i < input.size(); i++) {
@@ -36,37 +37,29 @@ public class RecipeItemTool implements CraftingRecipe {
     }
 
     @Override
-    public ItemStack assemble(CraftingInput input) {
+    public @NonNull ItemStack assemble(@NonNull CraftingInput input) {
         return result.create(); // ItemStackTemplate -> ItemStack, только во время игры, мир уже есть
     }
 
     @Override
-    public boolean showNotification() {
-        return false;
+    public boolean showNotification() { return false; }
+
+    @Override
+    public @NonNull String group() { return ""; }
+
+    @Override
+    public @NonNull PlacementInfo placementInfo() { return PlacementInfo.create(List.of(toolIngredient, inputIngredient)); }
+
+    @Override
+    public @NonNull CraftingBookCategory category() { return CraftingBookCategory.MISC; }
+
+    @Override
+    public @NonNull RecipeSerializer<? extends CraftingRecipe> getSerializer() {
+        return ModRecipeSerializers.TOOL_RECIPE_SERIALIZER;
     }
 
     @Override
-    public String group() {
-        return "";
-    }
-
-    @Override
-    public RecipeSerializer<? extends CraftingRecipe> getSerializer() {
-        return RecipeSerializers.TOOL_RECIPE_SERIALIZER;
-    }
-
-    @Override
-    public PlacementInfo placementInfo() {
-        return PlacementInfo.create(List.of(toolIngredient, inputIngredient));
-    }
-
-    @Override
-    public CraftingBookCategory category() {
-        return CraftingBookCategory.MISC;
-    }
-
-    @Override
-    public NonNullList<ItemStack> getRemainingItems(CraftingInput input) {
+    public @NonNull NonNullList<ItemStack> getRemainingItems(CraftingInput input) {
         NonNullList<ItemStack> remainder = NonNullList.withSize(input.size(), ItemStack.EMPTY);
         for (int i = 0; i < input.size(); i++) {
             ItemStack stack = input.getItem(i);

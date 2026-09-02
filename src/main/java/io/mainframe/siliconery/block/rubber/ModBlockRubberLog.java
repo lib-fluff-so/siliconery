@@ -1,6 +1,6 @@
-package io.mainframe.siliconery.block;
+package io.mainframe.siliconery.block.rubber;
 
-import io.mainframe.siliconery.item.Items;
+import io.mainframe.siliconery.item.ModItemList;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -18,9 +18,9 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import org.jspecify.annotations.NonNull;
 
-public class RubberLogBlock extends RotatedPillarBlock {
-
+public class ModBlockRubberLog extends RotatedPillarBlock {
     public static final BooleanProperty HAS_SAP =
             BooleanProperty.create("has_sap");
 
@@ -40,7 +40,7 @@ public class RubberLogBlock extends RotatedPillarBlock {
     private static final int MIN_REGEN_TICKS = 1200;
     private static final int MAX_REGEN_TICKS = 2400;
 
-    public RubberLogBlock(Properties properties) {
+    public ModBlockRubberLog(Properties properties) {
         super(properties);
 
         this.registerDefaultState(
@@ -54,44 +54,18 @@ public class RubberLogBlock extends RotatedPillarBlock {
 
     @Override
     protected void createBlockStateDefinition(
-            StateDefinition.Builder<net.minecraft.world.level.block.Block, BlockState> builder
+            StateDefinition.@NonNull Builder<net.minecraft.world.level.block.Block, BlockState> builder
     ) {
         super.createBlockStateDefinition(builder);
         builder.add(HAS_SAP, CAN_TAP, SAP_SIDE);
     }
 
-    public static BlockState rollSapGeneration(
-            BlockState state,
-            RandomSource random
-    ) {
-        if (random.nextFloat() < 0.2F) {
-            Direction[] horizontals = {
-                    Direction.NORTH,
-                    Direction.SOUTH,
-                    Direction.EAST,
-                    Direction.WEST
-            };
-
-            Direction side =
-                    horizontals[random.nextInt(horizontals.length)];
-
-            return state
-                    .setValue(HAS_SAP, true)
-                    .setValue(CAN_TAP, true)
-                    .setValue(SAP_SIDE, side);
-        }
-
-        return state
-                .setValue(HAS_SAP, false)
-                .setValue(CAN_TAP, false);
-    }
-
     @Override
     protected void tick(
             BlockState state,
-            ServerLevel level,
-            BlockPos pos,
-            RandomSource random
+            @NonNull ServerLevel level,
+            @NonNull BlockPos pos,
+            @NonNull RandomSource random
     ) {
         if (state.getValue(HAS_SAP)
                 && !state.getValue(CAN_TAP)) {
@@ -105,19 +79,19 @@ public class RubberLogBlock extends RotatedPillarBlock {
     }
 
     @Override
-    protected InteractionResult useItemOn(
-            ItemStack stack,
+    protected @NonNull InteractionResult useItemOn(
+            @NonNull ItemStack stack,
             BlockState state,
-            Level level,
-            BlockPos pos,
-            Player player,
-            InteractionHand hand,
-            BlockHitResult hitResult
+            @NonNull Level level,
+            @NonNull BlockPos pos,
+            @NonNull Player player,
+            @NonNull InteractionHand hand,
+            @NonNull BlockHitResult hitResult
     ) {
         if (state.getValue(HAS_SAP)
                 && state.getValue(CAN_TAP)
                 && hitResult.getDirection() == state.getValue(SAP_SIDE)
-                && stack.is(Items.TREETAP)) {
+                && stack.is(ModItemList.TREETAP)) {
 
             if (!level.isClientSide()) {
                 RandomSource random = level.getRandom();
@@ -129,7 +103,7 @@ public class RubberLogBlock extends RotatedPillarBlock {
                         pos.getX() + 0.5,
                         pos.getY() + 0.5,
                         pos.getZ() + 0.5,
-                        new ItemStack(Items.LATEX, amount)
+                        new ItemStack(ModItemList.LATEX, amount)
                 );
 
                 level.addFreshEntity(latex);

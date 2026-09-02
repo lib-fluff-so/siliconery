@@ -1,7 +1,8 @@
-package io.mainframe.siliconery.world;
+package io.mainframe.siliconery.world.rubber;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.mainframe.siliconery.world.ModFoliagePlacerTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
@@ -9,23 +10,24 @@ import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
+import org.jspecify.annotations.NonNull;
 
-public class RubberFoliagePlacer extends BlobFoliagePlacer {
-    public static final MapCodec<RubberFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec(instance ->
-            foliagePlacerParts(instance).apply(instance, (radius, offset) -> new RubberFoliagePlacer(radius, offset, 3))
+public class ModRubberFoliagePlacer extends BlobFoliagePlacer {
+    public static final MapCodec<ModRubberFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec(instance ->
+            foliagePlacerParts(instance).apply(instance, (radius, offset) -> new ModRubberFoliagePlacer(radius, offset, 3))
     );
 
-    public RubberFoliagePlacer(IntProvider radius, IntProvider offset, int height) {
+    public ModRubberFoliagePlacer(IntProvider radius, IntProvider offset, int height) {
         super(radius, offset, height);
     }
 
     @Override
-    protected FoliagePlacerType<?> type() {
-        return SiliconeryFoliagePlacerTypes.RUBBER;
+    protected @NonNull FoliagePlacerType<?> type() {
+        return ModFoliagePlacerTypes.RUBBER;
     }
 
     @Override
-    protected void createFoliage(WorldGenLevel level, FoliageSetter foliageSetter, RandomSource random, TreeConfiguration config, int maxFreeTreeHeight, FoliageAttachment attachment, int foliageHeight, int radius, int offset) {
+    protected void createFoliage(@NonNull WorldGenLevel level, @NonNull FoliageSetter foliageSetter, @NonNull RandomSource random, @NonNull TreeConfiguration config, int maxFreeTreeHeight, @NonNull FoliageAttachment attachment, int foliageHeight, int radius, int offset) {
         super.createFoliage(level, foliageSetter, random, config, maxFreeTreeHeight, attachment, foliageHeight, radius, offset);
 
         BlockPos top = attachment.pos();

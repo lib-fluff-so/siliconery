@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import java.util.function.Function;
 
-public class Block {
+public class ModBlockTools {
     public static net.minecraft.world.level.block.Block registerBlock(ResourceKey<net.minecraft.world.level.block.Block> id, Function<BlockBehaviour.Properties, net.minecraft.world.level.block.Block> blockFactory, BlockBehaviour.Properties properties) {
         // Create the block instance
         net.minecraft.world.level.block.Block block = blockFactory.apply(properties.setId(id));
@@ -32,7 +32,7 @@ public class Block {
     }
 
     public static BlockItemId createBlockItemId(String name) {
-        Identifier id = Identifier.fromNamespaceAndPath(Siliconery.MOD_ID, name);
+        Identifier id = Siliconery.id(name);
         return BlockItemId.create(id, id);
     }
 

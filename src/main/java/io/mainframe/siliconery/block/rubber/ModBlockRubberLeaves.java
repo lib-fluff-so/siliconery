@@ -22,12 +22,13 @@
  * SOFTWARE.
  */
 
-package io.mainframe.siliconery.block;
+// CHANGED A BIT BY fluff_.
+
+package io.mainframe.siliconery.block.rubber;
 
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -35,20 +36,21 @@ import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.LeavesBlock;
+import org.jspecify.annotations.NonNull;
 
-public class RubberLeavesBlock extends LeavesBlock {
-	public static final MapCodec<RubberLeavesBlock> CODEC = RecordCodecBuilder.mapCodec(
-		instance -> instance.group(propertiesCodec()).apply(instance, RubberLeavesBlock::new)
-	);
+public class ModBlockRubberLeaves extends LeavesBlock {
+    public static final MapCodec<ModBlockRubberLeaves> CODEC = RecordCodecBuilder.mapCodec(
+        instance -> instance.group(propertiesCodec()).apply(instance, ModBlockRubberLeaves::new)
+    );
 
-	public RubberLeavesBlock(Properties settings) { super(0.01F, settings); }
+    public ModBlockRubberLeaves(Properties settings) { super(0.01F, settings); }
 
-	@Override
-	public MapCodec<RubberLeavesBlock> codec() { return CODEC; }
+    @Override
+    public @NonNull MapCodec<ModBlockRubberLeaves> codec() { return CODEC; }
 
-	@Override
-	protected void spawnFallingLeavesParticle(Level world, BlockPos pos, RandomSource random) {
-		ColorParticleOption entityEffectParticleEffect = ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, 0xff4d6148);
-		ParticleUtils.spawnParticleBelow(world, pos, random, entityEffectParticleEffect);
-	}
+    @Override
+    protected void spawnFallingLeavesParticle(@NonNull Level world, @NonNull BlockPos pos, @NonNull RandomSource random) {
+        ColorParticleOption entityEffectParticleEffect = ColorParticleOption.create(ParticleTypes.TINTED_LEAVES, 0xff4d6148);
+        ParticleUtils.spawnParticleBelow(world, pos, random, entityEffectParticleEffect);
+    }
 }
