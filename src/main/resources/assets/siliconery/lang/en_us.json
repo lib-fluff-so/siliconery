@@ -14,8 +14,8 @@
   "item.siliconery.copper_casing": "Copper Casing",
   "item.siliconery.treetap": "Treetap",
   "item.siliconery.latex": "Latex",
-  "item.siliconery.rubber_log": "Rubber Log",
-  "item.siliconery.rubber_leaves": "Rubber Leaves",
-  "item.siliconery.rubber_sapling": "Rubber Sapling",
+  "block.siliconery.rubber_log": "Rubber Log",
+  "block.siliconery.rubber_leaves": "Rubber Leaves",
+  "block.siliconery.rubber_sapling": "Rubber Sapling",
   "block.siliconery.casing": "Machine Casing"
 }

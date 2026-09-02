@@ -17,7 +17,7 @@ public class ModItemList {
             new net.minecraft.world.item.Item.Properties().durability(80).stacksTo(1));
     public static final net.minecraft.world.item.Item LATEX = registerItem(ModItemIds.LATEX, net.minecraft.world.item.Item::new, new net.minecraft.world.item.Item.Properties());
     public static final net.minecraft.world.item.Item TREETAP = registerItem(ModItemIds.TREETAP, net.minecraft.world.item.Item::new,
-            new net.minecraft.world.item.Item.Properties().durability(60).stacksTo(1));
+            new net.minecraft.world.item.Item.Properties().durability(25).stacksTo(1));
 
     public static final Map<ModPlateable, net.minecraft.world.item.Item> PLATES = new EnumMap<>(ModPlateable.class);
     public static final Map<ModPlateable, net.minecraft.world.item.Item> CASINGS = new EnumMap<>(ModPlateable.class);

@@ -21,8 +21,7 @@ public class ModRubberSapDecorator extends TreeDecorator {
     public static final MapCodec<ModRubberSapDecorator> CODEC =
             MapCodec.unit(ModRubberSapDecorator::new);
 
-    public ModRubberSapDecorator() {
-    }
+    public ModRubberSapDecorator() {}
 
     @Override
     public void place(Context context) {
