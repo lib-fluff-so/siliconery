@@ -28,6 +28,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             public void buildRecipes() {
                 for (ModPlateable mat : ModPlateable.values()) {
                     net.minecraft.world.item.Item plate = ModItemList.PLATES.get(mat);
+                    net.minecraft.world.item.Item casing = ModItemList.CASINGS.get(mat);
                     output.accept(
                             ResourceKey.create(Registries.RECIPE, Siliconery.id(mat.name + "_plate_from_hammer")),
                             new ModRecipeItemTool(
@@ -38,11 +39,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                             ),
                             null
                     );
-                }
-                for (ModPlateable mat : ModPlateable.values()) {
-                    net.minecraft.world.item.Item plate = ModItemList.PLATES.get(mat);
-                    net.minecraft.world.item.Item casing = ModItemList.CASINGS.get(mat);
-
                     output.accept(
                             ResourceKey.create(Registries.RECIPE, Siliconery.id(mat.name + "_casing_from_hammer")),
                             new ModRecipeItemTool(
