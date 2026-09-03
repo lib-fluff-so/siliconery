@@ -1,0 +1,202 @@
+{
+  "variants": {
+    "axis=x,has_sap=true,can_tap=true,sap_side=north": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,has_sap=true,can_tap=true,sap_side=east": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,has_sap=true,can_tap=true,sap_side=south": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,has_sap=true,can_tap=true,sap_side=west": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,has_sap=true,can_tap=false,sap_side=north": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,has_sap=true,can_tap=false,sap_side=east": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,has_sap=true,can_tap=false,sap_side=south": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,has_sap=true,can_tap=false,sap_side=west": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,has_sap=false,can_tap=true,sap_side=north": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,has_sap=false,can_tap=true,sap_side=east": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,has_sap=false,can_tap=true,sap_side=south": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,has_sap=false,can_tap=true,sap_side=west": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,has_sap=false,can_tap=false,sap_side=north": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,has_sap=false,can_tap=false,sap_side=east": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,has_sap=false,can_tap=false,sap_side=south": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,has_sap=false,can_tap=false,sap_side=west": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y,has_sap=true,can_tap=true,sap_side=north": {
+      "model": "siliconery:block/rubber_log_sap_full"
+    },
+    "axis=y,has_sap=true,can_tap=true,sap_side=east": {
+      "model": "siliconery:block/rubber_log_sap_full",
+      "y": 90
+    },
+    "axis=y,has_sap=true,can_tap=true,sap_side=south": {
+      "model": "siliconery:block/rubber_log_sap_full",
+      "y": 180
+    },
+    "axis=y,has_sap=true,can_tap=true,sap_side=west": {
+      "model": "siliconery:block/rubber_log_sap_full",
+      "y": 270
+    },
+    "axis=y,has_sap=true,can_tap=false,sap_side=north": {
+      "model": "siliconery:block/rubber_log_sap_empty"
+    },
+    "axis=y,has_sap=true,can_tap=false,sap_side=east": {
+      "model": "siliconery:block/rubber_log_sap_empty",
+      "y": 90
+    },
+    "axis=y,has_sap=true,can_tap=false,sap_side=south": {
+      "model": "siliconery:block/rubber_log_sap_empty",
+      "y": 180
+    },
+    "axis=y,has_sap=true,can_tap=false,sap_side=west": {
+      "model": "siliconery:block/rubber_log_sap_empty",
+      "y": 270
+    },
+    "axis=y,has_sap=false,can_tap=true,sap_side=north": {
+      "model": "siliconery:block/rubber_log"
+    },
+    "axis=y,has_sap=false,can_tap=true,sap_side=east": {
+      "model": "siliconery:block/rubber_log"
+    },
+    "axis=y,has_sap=false,can_tap=true,sap_side=south": {
+      "model": "siliconery:block/rubber_log"
+    },
+    "axis=y,has_sap=false,can_tap=true,sap_side=west": {
+      "model": "siliconery:block/rubber_log"
+    },
+    "axis=y,has_sap=false,can_tap=false,sap_side=north": {
+      "model": "siliconery:block/rubber_log"
+    },
+    "axis=y,has_sap=false,can_tap=false,sap_side=east": {
+      "model": "siliconery:block/rubber_log"
+    },
+    "axis=y,has_sap=false,can_tap=false,sap_side=south": {
+      "model": "siliconery:block/rubber_log"
+    },
+    "axis=y,has_sap=false,can_tap=false,sap_side=west": {
+      "model": "siliconery:block/rubber_log"
+    },
+    "axis=z,has_sap=true,can_tap=true,sap_side=north": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90
+    },
+    "axis=z,has_sap=true,can_tap=true,sap_side=east": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90
+    },
+    "axis=z,has_sap=true,can_tap=true,sap_side=south": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90
+    },
+    "axis=z,has_sap=true,can_tap=true,sap_side=west": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90
+    },
+    "axis=z,has_sap=true,can_tap=false,sap_side=north": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90
+    },
+    "axis=z,has_sap=true,can_tap=false,sap_side=east": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90
+    },
+    "axis=z,has_sap=true,can_tap=false,sap_side=south": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90
+    },
+    "axis=z,has_sap=true,can_tap=false,sap_side=west": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90
+    },
+    "axis=z,has_sap=false,can_tap=true,sap_side=north": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90
+    },
+    "axis=z,has_sap=false,can_tap=true,sap_side=east": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90
+    },
+    "axis=z,has_sap=false,can_tap=true,sap_side=south": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90
+    },
+    "axis=z,has_sap=false,can_tap=true,sap_side=west": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90
+    },
+    "axis=z,has_sap=false,can_tap=false,sap_side=north": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90
+    },
+    "axis=z,has_sap=false,can_tap=false,sap_side=east": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90
+    },
+    "axis=z,has_sap=false,can_tap=false,sap_side=south": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90
+    },
+    "axis=z,has_sap=false,can_tap=false,sap_side=west": {
+      "model": "siliconery:block/rubber_log",
+      "x": 90
+    }
+  }
+}

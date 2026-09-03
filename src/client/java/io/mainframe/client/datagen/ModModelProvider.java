@@ -17,7 +17,8 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
         blockModelGenerators.createTrivialCube(ModBlockList.CASING);
         blockModelGenerators.createTrivialBlock(ModBlockList.RUBBER_LEAVES, TexturedModel.LEAVES);
-        blockModelGenerators.createTrivialBlock(ModBlockList.RUBBER_LOG, TexturedModel.COLUMN_ALT);
+        // RUBBER_LOG: hand-authored model/blockstate/item-model (see assets/siliconery/{models,blockstates}) —
+        // has_sap/can_tap/sap_side drive a per-face sap-vein texture that createTrivialBlock can't express.
         blockModelGenerators.createCrossBlock(ModBlockList.RUBBER_SAPLING, BlockModelGenerators.PlantType.TINTED);
     }
 
@@ -36,6 +37,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItemList.CUTTER, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerators.generateFlatItem(ModItemList.TREETAP, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerators.generateFlatItem(ModItemList.LATEX, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItemList.RUBBER, ModelTemplates.FLAT_ITEM);
     }
 
     @Override public @NonNull String getName() { return "Models"; }

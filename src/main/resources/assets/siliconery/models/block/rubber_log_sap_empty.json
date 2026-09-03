@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "siliconery:block/rubber_log",
+    "north": "siliconery:block/rubber_log_sap_empty",
+    "south": "siliconery:block/rubber_log",
+    "east": "siliconery:block/rubber_log",
+    "west": "siliconery:block/rubber_log",
+    "up": "siliconery:block/rubber_log_top",
+    "down": "siliconery:block/rubber_log_top"
+  }
+}

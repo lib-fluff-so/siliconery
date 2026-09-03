@@ -25,6 +25,8 @@ public class ModCreativeTab {
                 output.accept(ModItemList.FORGE_HAMMER);
                 output.accept(ModItemList.CUTTER);
                 output.accept(ModItemList.TREETAP);
+                output.accept(ModItemList.LATEX);
+                output.accept(ModItemList.RUBBER);
                 output.accept(ModBlockList.CASING.asItem());
                 output.accept(ModBlockList.RUBBER_LEAVES.asItem());
                 output.accept(ModBlockList.RUBBER_LOG.asItem());

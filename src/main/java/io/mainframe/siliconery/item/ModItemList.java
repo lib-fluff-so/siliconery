@@ -16,6 +16,7 @@ public class ModItemList {
     public static final net.minecraft.world.item.Item CUTTER = registerItem(ModItemIds.CUTTER, net.minecraft.world.item.Item::new,
             new net.minecraft.world.item.Item.Properties().durability(80).stacksTo(1));
     public static final net.minecraft.world.item.Item LATEX = registerItem(ModItemIds.LATEX, net.minecraft.world.item.Item::new, new net.minecraft.world.item.Item.Properties());
+    public static final net.minecraft.world.item.Item RUBBER = registerItem(ModItemIds.RUBBER, net.minecraft.world.item.Item::new, new net.minecraft.world.item.Item.Properties());
     public static final net.minecraft.world.item.Item TREETAP = registerItem(ModItemIds.TREETAP, net.minecraft.world.item.Item::new,
             new net.minecraft.world.item.Item.Properties().durability(25).stacksTo(1));
 
@@ -39,5 +40,5 @@ public class ModItemList {
         }
     }
 
-    public static void initialize() { }
+    public static void initialize() {}
 }

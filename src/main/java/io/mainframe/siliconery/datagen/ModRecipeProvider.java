@@ -8,10 +8,14 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.ItemStackTemplate;
+import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
 import org.jspecify.annotations.NonNull;
 
 import java.util.concurrent.CompletableFuture;
@@ -26,6 +30,16 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         return new net.minecraft.data.recipes.RecipeProvider(registries, output) {
             @Override
             public void buildRecipes() {
+                SimpleCookingRecipeBuilder.smelting(
+                        Ingredient.of(ModItemList.LATEX),
+                        RecipeCategory.MISC,
+                        CookingBookCategory.MISC,
+                        ModItemList.RUBBER,
+                        0.1F,
+                        200
+                ).unlockedBy(getHasName(ModItemList.LATEX), has(ModItemList.LATEX))
+                        .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id("rubber_from_smelting")));
+
                 for (ModPlateable mat : ModPlateable.values()) {
                     net.minecraft.world.item.Item plate = ModItemList.PLATES.get(mat);
                     net.minecraft.world.item.Item casing = ModItemList.CASINGS.get(mat);
