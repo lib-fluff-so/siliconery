@@ -40,5 +40,6 @@ public class ModItemList {
         }
     }
 
+    @SuppressWarnings("EmptyMethod")
     public static void initialize() {}
 }

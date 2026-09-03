@@ -17,6 +17,7 @@ public class ModTreeDecoratorTypes {
                     new TreeDecoratorType<>(ModRubberSapDecorator.CODEC)
             );
 
+    @SuppressWarnings("EmptyMethod")
     public static void register() {
     }
 }

@@ -40,6 +40,7 @@ public class ModRecipeSerializers {
                     new RecipeSerializer<>(TOOL_CODEC, TOOL_STREAM_CODEC)
             );
 
+    @SuppressWarnings("EmptyMethod")
     public static void initialize() {
     }
 }

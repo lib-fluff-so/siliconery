@@ -38,5 +38,6 @@ public class ModBlockList {
                     .instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)
     );
 
+    @SuppressWarnings("EmptyMethod")
     public static void initialize() { }
 }

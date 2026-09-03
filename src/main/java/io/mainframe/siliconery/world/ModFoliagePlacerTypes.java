@@ -13,5 +13,6 @@ public class ModFoliagePlacerTypes {
         new FoliagePlacerType<>(ModRubberFoliagePlacer.CODEC)
     );
 
+    @SuppressWarnings("EmptyMethod")
     public static void initialize() {}
 }

@@ -36,6 +36,7 @@ public class ModBlockTools {
         return BlockItemId.create(id, id);
     }
 
+    @SuppressWarnings("EmptyMethod")
     public static void initialize() {
     }
 }

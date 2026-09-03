@@ -21,6 +21,7 @@ public class ModItemTools {
         return ResourceKey.create(Registries.ITEM, Siliconery.id(name));
     }
 
+    @SuppressWarnings("EmptyMethod")
     public static void initialize() {
     }
 }
