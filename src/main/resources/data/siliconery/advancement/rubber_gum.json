@@ -1,0 +1,21 @@
+{
+  "parent": "siliconery:rubber_smelt",
+  "display": {
+    "icon": { "id": "siliconery:chewing_gum" },
+    "title": { "translate": "advancements.siliconery.rubber.gum.title" },
+    "description": { "translate": "advancements.siliconery.rubber.gum.description" },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "has_rubber": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": ["siliconery:chewing_gum"] }
+        ]
+      }
+    }
+  }
+}
