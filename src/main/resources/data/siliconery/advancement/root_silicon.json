@@ -1,8 +1,8 @@
 {
   "display": {
     "icon": { "id": "minecraft:sand" },
-    "title": { "translate": "advancements.siliconery.root.title" },
-    "description": { "translate": "advancements.siliconery.root.description" },
+    "title": { "translate": "advancements.siliconery.silicon.root.title" },
+    "description": { "translate": "advancements.siliconery.silicon.root.description" },
     "background": "minecraft:textures/block/sand.png",
     "frame": "challenge",
     "show_toast": true,

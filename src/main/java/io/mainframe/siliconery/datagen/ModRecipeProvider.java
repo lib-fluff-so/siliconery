@@ -10,9 +10,11 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.ItemStackTemplate;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import org.jspecify.annotations.NonNull;
@@ -30,14 +32,21 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             @Override
             public void buildRecipes() {
                 SimpleCookingRecipeBuilder.smelting(
-                        Ingredient.of(ModItemList.LATEX),
-                        RecipeCategory.MISC,
-                        CookingBookCategory.MISC,
-                        ModItemList.RUBBER,
-                        0.1F,
-                        200
-                ).unlockedBy(getHasName(ModItemList.LATEX), has(ModItemList.LATEX))
+                                Ingredient.of(ModItemList.LATEX),
+                                RecipeCategory.MISC,
+                                CookingBookCategory.MISC,
+                                ModItemList.RUBBER,
+                                0.1F,
+                                200
+                        ).unlockedBy(getHasName(ModItemList.LATEX), has(ModItemList.LATEX))
                         .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id("rubber_from_smelting")));
+
+                ShapelessRecipeBuilder.shapeless(registries.lookupOrThrow(Registries.ITEM), RecipeCategory.FOOD, new ItemStackTemplate(ModItemList.CHEWING_GUM, 4))
+                        .requires(ModItemList.RUBBER)
+                        .requires(Items.SUGAR)
+                        .requires(Items.DYE.pink())
+                        .unlockedBy(getHasName(ModItemList.RUBBER), has(ModItemList.RUBBER))
+                        .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id("chewing_gum_from_rubber")));
 
                 for (ModPlateable mat : ModPlateable.values()) {
                     net.minecraft.world.item.Item plate = ModItemList.PLATES.get(mat);

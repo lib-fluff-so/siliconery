@@ -27,6 +27,7 @@ public class ModCreativeTab {
                 output.accept(ModItemList.TREETAP);
                 output.accept(ModItemList.LATEX);
                 output.accept(ModItemList.RUBBER);
+                output.accept(ModItemList.CHEWING_GUM);
                 output.accept(ModBlockList.CASING.asItem());
                 output.accept(ModBlockList.RUBBER_LEAVES.asItem());
                 output.accept(ModBlockList.RUBBER_LOG.asItem());

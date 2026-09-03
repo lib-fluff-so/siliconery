@@ -1,0 +1,21 @@
+{
+  "parent": "siliconery:root_rubber",
+  "display": {
+    "icon": { "id": "siliconery:rubber" },
+    "title": { "translate": "advancements.siliconery.rubber.smelt.title" },
+    "description": { "translate": "advancements.siliconery.rubber.smelt.description" },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "has_rubber": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": ["siliconery:rubber"] }
+        ]
+      }
+    }
+  }
+}

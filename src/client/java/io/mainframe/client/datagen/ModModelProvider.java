@@ -38,6 +38,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItemList.TREETAP, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerators.generateFlatItem(ModItemList.LATEX, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItemList.RUBBER, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItemList.CHEWING_GUM, ModelTemplates.FLAT_ITEM);
     }
 
     @Override public @NonNull String getName() { return "Models"; }

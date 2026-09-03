@@ -1,6 +1,7 @@
 package io.mainframe.siliconery.item;
 
 import io.mainframe.siliconery.misc.ModPlateable;
+import net.minecraft.world.food.FoodProperties;
 
 import java.util.EnumMap;
 import java.util.Map;
@@ -17,6 +18,14 @@ public class ModItemList {
             new net.minecraft.world.item.Item.Properties().durability(80).stacksTo(1));
     public static final net.minecraft.world.item.Item LATEX = registerItem(ModItemIds.LATEX, net.minecraft.world.item.Item::new, new net.minecraft.world.item.Item.Properties());
     public static final net.minecraft.world.item.Item RUBBER = registerItem(ModItemIds.RUBBER, net.minecraft.world.item.Item::new, new net.minecraft.world.item.Item.Properties());
+    public static final net.minecraft.world.item.Item CHEWING_GUM = registerItem(ModItemIds.CHEWING_GUM, net.minecraft.world.item.Item::new,
+            new net.minecraft.world.item.Item.Properties().food(
+                    new FoodProperties.Builder()
+                            .nutrition(0)
+                            .saturationModifier(0.0F)
+                            .alwaysEdible()
+                            .build()
+            ));
     public static final net.minecraft.world.item.Item TREETAP = registerItem(ModItemIds.TREETAP, net.minecraft.world.item.Item::new,
             new net.minecraft.world.item.Item.Properties().durability(25).stacksTo(1));
 

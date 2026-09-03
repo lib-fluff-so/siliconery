@@ -14,6 +14,7 @@ public class ModItemIds {
     public static final ResourceKey<Item> TREETAP = createItemId("treetap");
     public static final ResourceKey<Item> LATEX = createItemId("latex");
     public static final ResourceKey<Item> RUBBER = createItemId("rubber");
+    public static final ResourceKey<Item> CHEWING_GUM = createItemId("chewing_gum");
 
     public static ResourceKey<Item> plate(String materialName) { return createItemId(materialName + "_plate"); }
     public static ResourceKey<Item> casing(String materialName) { return createItemId(materialName + "_casing"); }
