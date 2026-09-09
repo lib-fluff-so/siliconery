@@ -28,6 +28,14 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
 
         builder(BlockTags.OVERWORLD_NATURAL_LOGS)
                 .add(ModBlockItemIds.RUBBER_LOG);
+
+        builder(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ModBlockItemIds.ZINC_ORE)
+                .add(ModBlockItemIds.DEEPSLATE_ZINC_ORE);
+
+        builder(BlockTags.NEEDS_STONE_TOOL)
+                .add(ModBlockItemIds.ZINC_ORE)
+                .add(ModBlockItemIds.DEEPSLATE_ZINC_ORE);
     }
 
     @Override public @NonNull String getName() { return "Block Tags"; }

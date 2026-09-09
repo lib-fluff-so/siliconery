@@ -22,8 +22,14 @@
   "item.siliconery.latex": "Latex",
   "item.siliconery.rubber": "Rubber",
   "item.siliconery.chewing_gum": "Chewing Gum",
+  "item.siliconery.raw_zinc": "Raw Zinc",
+  "item.siliconery.zinc_ingot": "Zinc Ingot",
+  "item.siliconery.zinc_plate": "Zinc Plate",
+  "item.siliconery.zinc_casing": "Zinc Casing",
   "block.siliconery.rubber_log": "Rubber Log",
   "block.siliconery.rubber_leaves": "Rubber Leaves",
   "block.siliconery.rubber_sapling": "Rubber Sapling",
-  "block.siliconery.casing": "Machine Casing"
+  "block.siliconery.casing": "Machine Casing",
+  "block.siliconery.zinc_ore": "Zinc Ore",
+  "block.siliconery.deepslate_zinc_ore": "Deepslate Zinc Ore"
 }

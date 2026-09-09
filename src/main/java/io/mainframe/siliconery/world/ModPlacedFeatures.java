@@ -1,18 +1,16 @@
 package io.mainframe.siliconery.world;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.placement.BiomeFilter;
-import net.minecraft.world.level.levelgen.placement.CountPlacement;
-import net.minecraft.world.level.levelgen.placement.HeightmapPlacement;
-import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.PlacementModifier;
-import net.minecraft.world.level.levelgen.placement.RarityFilter;
+import net.minecraft.world.level.levelgen.placement.*;
 
 import java.util.List;
 
@@ -56,11 +54,23 @@ public class ModPlacedFeatures {
                     id("rubber_tree_bamboo_jungle_section")
             );
 
+    public static final ResourceKey<PlacedFeature> ORE_ZINC =
+            ResourceKey.create(
+                    Registries.PLACED_FEATURE,
+                    id("ore_zinc")
+            );
+
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         Holder<ConfiguredFeature<?, ?>> rubberTree =
                 context.lookup(Registries.CONFIGURED_FEATURE)
                         .getOrThrow(
                                 ModConfiguredFeatures.RUBBER_TREE
+                        );
+
+        Holder<ConfiguredFeature<?, ?>> oreZinc =
+                context.lookup(Registries.CONFIGURED_FEATURE)
+                        .getOrThrow(
+                                ModConfiguredFeatures.ORE_ZINC
                         );
 
         PlacementModifier surface =
@@ -123,6 +133,18 @@ public class ModPlacedFeatures {
                                 InSquarePlacement.spread(),
                                 surface,
                                 BiomeFilter.biome()))
+        );
+
+        context.register(ORE_ZINC, new PlacedFeature(
+                oreZinc,
+                List.of(
+                        CountPlacement.of(16),
+                        InSquarePlacement.spread(),
+                        HeightRangePlacement.triangle(
+                                VerticalAnchor.absolute(-24),
+                                VerticalAnchor.absolute(128)
+                        ),
+                        BiomeFilter.biome()))
         );
     }
 }

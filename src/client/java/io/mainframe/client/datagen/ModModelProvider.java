@@ -20,6 +20,8 @@ public class ModModelProvider extends FabricModelProvider {
         // RUBBER_LOG: hand-authored model/blockstate/item-model (see assets/siliconery/{models,blockstates}) —
         // has_sap/can_tap/sap_side drive a per-face sap-vein texture that createTrivialBlock can't express.
         blockModelGenerators.createCrossBlock(ModBlockList.RUBBER_SAPLING, BlockModelGenerators.PlantType.TINTED);
+        blockModelGenerators.createTrivialCube(ModBlockList.ZINC_ORE);
+        blockModelGenerators.createTrivialCube(ModBlockList.DEEPSLATE_ZINC_ORE);
     }
 
     @Override
@@ -39,6 +41,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItemList.LATEX, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItemList.RUBBER, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItemList.CHEWING_GUM, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItemList.RAW_ZINC, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItemList.ZINC_INGOT, ModelTemplates.FLAT_ITEM);
     }
 
     @Override public @NonNull String getName() { return "Models"; }

@@ -28,6 +28,10 @@ public class ModCreativeTab {
                 output.accept(ModItemList.LATEX);
                 output.accept(ModItemList.RUBBER);
                 output.accept(ModItemList.CHEWING_GUM);
+                output.accept(ModItemList.RAW_ZINC);
+                output.accept(ModItemList.ZINC_INGOT);
+                output.accept(ModBlockList.ZINC_ORE.asItem());
+                output.accept(ModBlockList.DEEPSLATE_ZINC_ORE.asItem());
                 output.accept(ModBlockList.CASING.asItem());
                 output.accept(ModBlockList.RUBBER_LEAVES.asItem());
                 output.accept(ModBlockList.RUBBER_LOG.asItem());

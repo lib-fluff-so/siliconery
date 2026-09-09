@@ -38,6 +38,20 @@ public class ModBlockList {
                     .instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)
     );
 
+    public static final net.minecraft.world.level.block.Block ZINC_ORE = registerBlock(
+            ModBlockItemIds.ZINC_ORE,
+            net.minecraft.world.level.block.Block::new,
+            BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE)
+                    .requiresCorrectToolForDrops().strength(3.0F, 3.0F)
+    );
+
+    public static final net.minecraft.world.level.block.Block DEEPSLATE_ZINC_ORE = registerBlock(
+            ModBlockItemIds.DEEPSLATE_ZINC_ORE,
+            net.minecraft.world.level.block.Block::new,
+            BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE).sound(SoundType.DEEPSLATE)
+                    .requiresCorrectToolForDrops().strength(4.5F, 3.0F)
+    );
+
     @SuppressWarnings("EmptyMethod")
     public static void initialize() { }
 }

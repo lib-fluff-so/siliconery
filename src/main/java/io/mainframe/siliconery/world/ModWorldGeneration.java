@@ -43,5 +43,11 @@ public class ModWorldGeneration {
                 GenerationStep.Decoration.VEGETAL_DECORATION,
                 ModPlacedFeatures.RUBBER_TREE_BAMBOO_JUNGLE_SECTION
         );
+
+        BiomeModifications.addFeature(
+                BiomeSelectors.foundInOverworld(),
+                GenerationStep.Decoration.UNDERGROUND_ORES,
+                ModPlacedFeatures.ORE_ZINC
+        );
     }
 }

@@ -28,6 +28,8 @@ public class ModItemList {
             ));
     public static final net.minecraft.world.item.Item TREETAP = registerItem(ModItemIds.TREETAP, net.minecraft.world.item.Item::new,
             new net.minecraft.world.item.Item.Properties().durability(25).stacksTo(1));
+    public static final net.minecraft.world.item.Item RAW_ZINC = registerItem(ModItemIds.RAW_ZINC, net.minecraft.world.item.Item::new, new net.minecraft.world.item.Item.Properties());
+    public static final net.minecraft.world.item.Item ZINC_INGOT = registerItem(ModItemIds.ZINC_INGOT, net.minecraft.world.item.Item::new, new net.minecraft.world.item.Item.Properties());
 
     public static final Map<ModPlateable, net.minecraft.world.item.Item> PLATES = new EnumMap<>(ModPlateable.class);
     public static final Map<ModPlateable, net.minecraft.world.item.Item> CASINGS = new EnumMap<>(ModPlateable.class);

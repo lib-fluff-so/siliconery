@@ -1,11 +1,13 @@
 package io.mainframe.siliconery.misc;
 
+import io.mainframe.siliconery.item.ModItemList;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 
 public enum ModPlateable {
     IRON("iron", Items.IRON_INGOT),
-    COPPER("copper", Items.COPPER_INGOT);
+    COPPER("copper", Items.COPPER_INGOT),
+    ZINC("zinc", ModItemList.ZINC_INGOT);
 
     public final String name;
     public final Item ingotInput;

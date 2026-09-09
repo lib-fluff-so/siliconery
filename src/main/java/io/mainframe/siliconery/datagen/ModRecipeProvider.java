@@ -41,6 +41,26 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         ).unlockedBy(getHasName(ModItemList.LATEX), has(ModItemList.LATEX))
                         .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id("rubber_from_smelting")));
 
+                SimpleCookingRecipeBuilder.smelting(
+                                Ingredient.of(ModItemList.RAW_ZINC),
+                                RecipeCategory.MISC,
+                                CookingBookCategory.MISC,
+                                ModItemList.ZINC_INGOT,
+                                0.7F,
+                                200
+                        ).unlockedBy(getHasName(ModItemList.RAW_ZINC), has(ModItemList.RAW_ZINC))
+                        .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id("zinc_ingot_from_smelting")));
+
+                SimpleCookingRecipeBuilder.blasting(
+                                Ingredient.of(ModItemList.RAW_ZINC),
+                                RecipeCategory.MISC,
+                                CookingBookCategory.MISC,
+                                ModItemList.ZINC_INGOT,
+                                0.7F,
+                                100
+                        ).unlockedBy(getHasName(ModItemList.RAW_ZINC), has(ModItemList.RAW_ZINC))
+                        .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id("zinc_ingot_from_blasting")));
+
                 ShapelessRecipeBuilder.shapeless(registries.lookupOrThrow(Registries.ITEM), RecipeCategory.FOOD, new ItemStackTemplate(ModItemList.CHEWING_GUM, 4))
                         .requires(ModItemList.RUBBER)
                         .requires(Items.SUGAR)
