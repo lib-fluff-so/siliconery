@@ -16,11 +16,8 @@ import org.jspecify.annotations.NonNull;
 public class SiliconeryDataGen implements DataGeneratorEntrypoint {
 
     @Override
-    public void onInitializeDataGenerator(
-            FabricDataGenerator fabricDataGenerator
-    ) {
-        FabricDataGenerator.Pack pack =
-                fabricDataGenerator.createPack();
+    public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
+        FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 
         pack.addProvider(ModModelProvider::new);
         pack.addProvider(ModRecipeProvider::new);
@@ -36,9 +33,7 @@ public class SiliconeryDataGen implements DataGeneratorEntrypoint {
                     }
 
                     @Override
-                    public @NonNull String getName() {
-                        return "Dynamic Registries";
-                    }
+                    public @NonNull String getName() { return "Dynamic Registries"; }
                 }
         );
 
@@ -47,17 +42,8 @@ public class SiliconeryDataGen implements DataGeneratorEntrypoint {
     }
 
     @Override
-    public void buildRegistry(
-            RegistrySetBuilder registryBuilder
-    ) {
-        registryBuilder.add(
-                Registries.CONFIGURED_FEATURE,
-                ModConfiguredFeatures::bootstrap
-        );
-
-        registryBuilder.add(
-                Registries.PLACED_FEATURE,
-                ModPlacedFeatures::bootstrap
-        );
+    public void buildRegistry(RegistrySetBuilder registryBuilder) {
+        registryBuilder.add(Registries.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap);
+        registryBuilder.add(Registries.PLACED_FEATURE, ModPlacedFeatures::bootstrap);
     }
 }

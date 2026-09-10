@@ -18,10 +18,9 @@ import java.util.Objects;
 
 public class ModRubberSapDecorator extends TreeDecorator {
 
-    public static final MapCodec<ModRubberSapDecorator> CODEC =
-            MapCodec.unit(ModRubberSapDecorator::new);
+    public static final MapCodec<ModRubberSapDecorator> CODEC = MapCodec.unit(ModRubberSapDecorator::new);
 
-    public ModRubberSapDecorator() {}
+    public ModRubberSapDecorator() { }
 
     @Override
     public void place(Context context) {
@@ -30,26 +29,15 @@ public class ModRubberSapDecorator extends TreeDecorator {
         for (BlockPos pos : context.logs()) {
             BlockState state = context.level().getBlockState(pos);
 
-            if (!state.is(ModBlockList.RUBBER_LOG)) {
-                continue;
-            }
+            if (!state.is(ModBlockList.RUBBER_LOG)) { continue; }
 
-            if (random.nextFloat() >= Config.RubberLog.RUBBER_SAP_SPAWN_CHANCE) {
-                continue;
-            }
+            if (random.nextFloat() >= Config.RubberLog.RUBBER_SAP_SPAWN_CHANCE) { continue; }
 
-            Direction[] sides = {
-                    Direction.NORTH,
-                    Direction.SOUTH,
-                    Direction.EAST,
-                    Direction.WEST
-            };
+            Direction[] sides = {Direction.NORTH, Direction.SOUTH, Direction.EAST, Direction.WEST };
 
             Direction side = sides[random.nextInt(4)];
 
-            context.setBlock(
-                    pos,
-                    state
+            context.setBlock(pos, state
                             .setValue(ModBlockRubberLog.HAS_SAP, true)
                             .setValue(ModBlockRubberLog.CAN_TAP, true)
                             .setValue(ModBlockRubberLog.SAP_SIDE, side)
@@ -59,8 +47,6 @@ public class ModRubberSapDecorator extends TreeDecorator {
 
     @Override
     protected @NonNull TreeDecoratorType<?> type() {
-        return Objects.requireNonNull(BuiltInRegistries.TREE_DECORATOR_TYPE.getValue(
-                Siliconery.id("rubber_sap")
-        ));
+        return Objects.requireNonNull(BuiltInRegistries.TREE_DECORATOR_TYPE.getValue(Siliconery.id("rubber_sap")));
     }
 }

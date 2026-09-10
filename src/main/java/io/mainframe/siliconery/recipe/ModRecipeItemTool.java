@@ -37,9 +37,7 @@ public class ModRecipeItemTool implements CraftingRecipe {
     }
 
     @Override
-    public @NonNull ItemStack assemble(@NonNull CraftingInput input) {
-        return result.create(); // ItemStackTemplate -> ItemStack, только во время игры, мир уже есть
-    }
+    public @NonNull ItemStack assemble(@NonNull CraftingInput input) { return result.create(); }
 
     @Override
     public boolean showNotification() { return false; }
@@ -66,9 +64,7 @@ public class ModRecipeItemTool implements CraftingRecipe {
             if (toolIngredient.test(stack)) {
                 ItemStack damaged = stack.copy();
                 damaged.setDamageValue(damaged.getDamageValue() + toolDamage);
-                if (damaged.getDamageValue() < damaged.getMaxDamage()) {
-                    remainder.set(i, damaged);
-                }
+                if (damaged.getDamageValue() < damaged.getMaxDamage()) { remainder.set(i, damaged); }
             }
         }
         return remainder;

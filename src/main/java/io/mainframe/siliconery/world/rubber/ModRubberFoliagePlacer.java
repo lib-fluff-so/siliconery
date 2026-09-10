@@ -17,14 +17,10 @@ public class ModRubberFoliagePlacer extends BlobFoliagePlacer {
             foliagePlacerParts(instance).apply(instance, (radius, offset) -> new ModRubberFoliagePlacer(radius, offset, 3))
     );
 
-    public ModRubberFoliagePlacer(IntProvider radius, IntProvider offset, int height) {
-        super(radius, offset, height);
-    }
+    public ModRubberFoliagePlacer(IntProvider radius, IntProvider offset, int height) { super(radius, offset, height); }
 
     @Override
-    protected @NonNull FoliagePlacerType<?> type() {
-        return ModFoliagePlacerTypes.RUBBER;
-    }
+    protected @NonNull FoliagePlacerType<?> type() { return ModFoliagePlacerTypes.RUBBER; }
 
     @Override
     protected void createFoliage(@NonNull WorldGenLevel level, @NonNull FoliageSetter foliageSetter, @NonNull RandomSource random, @NonNull TreeConfiguration config, int maxFreeTreeHeight, @NonNull FoliageAttachment attachment, int foliageHeight, int radius, int offset) {

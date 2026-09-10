@@ -11,7 +11,6 @@ public enum ModPlateable {
 
     public final String name;
     public final Item ingotInput;
-
     ModPlateable(String name, Item ingotInput) {
         this.name = name;
         this.ingotInput = ingotInput;

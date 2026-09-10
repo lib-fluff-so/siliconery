@@ -14,7 +14,6 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 
 public class ModRecipeSerializers {
-
     private static final MapCodec<ModRecipeItemTool> TOOL_CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     Ingredient.CODEC.fieldOf("tool").forGetter(r -> r.toolIngredient),

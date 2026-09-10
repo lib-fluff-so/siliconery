@@ -33,9 +33,7 @@ public class ModConfiguredFeatures {
                     io.mainframe.siliconery.Siliconery.id("ore_zinc")
             );
 
-    public static void bootstrap(
-            BootstrapContext<ConfiguredFeature<?, ?>> context
-    ) {
+    public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         context.register(
                 RUBBER_TREE,
                 new ConfiguredFeature<>(Feature.TREE,
@@ -55,20 +53,10 @@ public class ModConfiguredFeatures {
 
         context.register(
                 ORE_ZINC,
-                new ConfiguredFeature<>(Feature.ORE,
-                        new OreConfiguration(
-                                List.of(
-                                        OreConfiguration.target(
-                                                stoneReplaceable,
-                                                ModBlockList.ZINC_ORE.defaultBlockState()
-                                        ),
-                                        OreConfiguration.target(
-                                                deepslateReplaceable,
-                                                ModBlockList.DEEPSLATE_ZINC_ORE.defaultBlockState()
-                                        )
-                                ),
-                                8
-                        )
+                new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(List.of(
+                                OreConfiguration.target(stoneReplaceable, ModBlockList.ZINC_ORE.defaultBlockState()),
+                                OreConfiguration.target(deepslateReplaceable, ModBlockList.DEEPSLATE_ZINC_ORE.defaultBlockState())
+                        ), 8)
                 )
         );
     }
