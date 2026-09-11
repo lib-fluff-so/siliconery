@@ -3,6 +3,7 @@ package io.mainframe.client;
 import io.mainframe.client.datagen.ModModelProvider;
 import io.mainframe.siliconery.datagen.ModBlockLootProvider;
 import io.mainframe.siliconery.datagen.ModBlockTagsProvider;
+import io.mainframe.siliconery.datagen.ModItemTagsProvider;
 import io.mainframe.siliconery.datagen.ModRecipeProvider;
 import io.mainframe.siliconery.world.ModConfiguredFeatures;
 import io.mainframe.siliconery.world.ModPlacedFeatures;
@@ -39,6 +40,7 @@ public class SiliconeryDataGen implements DataGeneratorEntrypoint {
 
         pack.addProvider(ModBlockLootProvider::new);
         pack.addProvider(ModBlockTagsProvider::new);
+        pack.addProvider(ModItemTagsProvider::new);
     }
 
     @Override

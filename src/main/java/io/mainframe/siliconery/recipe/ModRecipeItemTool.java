@@ -24,16 +24,16 @@ public class ModRecipeItemTool implements CraftingRecipe {
 
     @Override
     public boolean matches(CraftingInput input, @NonNull Level level) {
-        boolean hasTool = false;
-        boolean hasInput = false;
+        int toolCount = 0;
+        int inputCount = 0;
         for (int i = 0; i < input.size(); i++) {
             ItemStack stack = input.getItem(i);
             if (stack.isEmpty()) continue;
-            if (toolIngredient.test(stack)) hasTool = true;
-            else if (inputIngredient.test(stack)) hasInput = true;
+            if (toolIngredient.test(stack)) toolCount++;
+            else if (inputIngredient.test(stack)) inputCount++;
             else return false;
         }
-        return hasTool && hasInput;
+        return toolCount == 1 && inputCount == 1;
     }
 
     @Override

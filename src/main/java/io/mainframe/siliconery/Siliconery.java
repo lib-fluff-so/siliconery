@@ -39,6 +39,9 @@ public class Siliconery implements ModInitializer {
         ModWorldGeneration.register();
         long duration = System.currentTimeMillis() - startTime;
         LOGGER.info("Done in {} ms!", duration);
+        net.minecraft.core.registries.BuiltInRegistries.ITEM.stream()
+                .filter(item -> net.minecraft.core.registries.BuiltInRegistries.ITEM.getKey(item).getNamespace().equals(MOD_ID))
+                .forEach(item -> System.out.println("ITEM_LOG: " + net.minecraft.core.registries.BuiltInRegistries.ITEM.getKey(item).getPath()));
     }
 
     public static Identifier id(String path) { return Identifier.fromNamespaceAndPath(MOD_ID, path); }

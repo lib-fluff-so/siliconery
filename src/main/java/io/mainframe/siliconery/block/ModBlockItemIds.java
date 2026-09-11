@@ -12,4 +12,5 @@ public class ModBlockItemIds {
 
     public static BlockItemId ore(String materialName) { return createBlockItemId(materialName + "_ore"); }
     public static BlockItemId deepslateOre(String materialName) { return createBlockItemId("deepslate_" + materialName + "_ore"); }
+    public static BlockItemId storageBlock(String materialName) { return createBlockItemId(materialName + "_block"); }
 }

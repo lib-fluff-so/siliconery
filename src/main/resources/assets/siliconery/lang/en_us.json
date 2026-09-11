@@ -1,39 +1,85 @@
 {
+  "creativeTab.siliconery": "Siliconery",
+  "itemGroup.siliconery": "Siliconery",
+
   "item.siliconery.silicon": "Crystalline Silicon",
-  "creativeTab.siliconery": "Siliconery!",
-  "advancements.siliconery.silicon.root.title": "Silicon Awaits",
-  "advancements.siliconery.silicon.root.description": "Don't you worry: it's just sand.",
-  "advancements.siliconery.rubber.root.title": "Latex acquired!",
-  "advancements.siliconery.rubber.root.description": "Now go smelt it...",
-  "advancements.siliconery.rubber.smelt.title": "Rubberize",
-  "advancements.siliconery.rubber.smelt.description": "The rubber is in your hands",
-  "advancements.siliconery.rubber.gum.title": "A thing to chew",
-  "advancements.siliconery.rubber.gum.description": "it's useless, though you can chew it!",
-  "item.siliconery.mgsi": "MG-Si (1)",
-  "item.siliconery.mgsi_powder": "MG-Si powder (2)",
+  "item.siliconery.mgsi": "Metallurgical-Grade Silicon",
+  "item.siliconery.mgsi_powder": "Metallurgical Silicon Powder",
   "item.siliconery.slag": "Slag",
   "item.siliconery.forge_hammer": "Forge Hammer",
   "item.siliconery.cutter": "Cutter",
-  "item.siliconery.iron_plate": "Iron Plate",
-  "item.siliconery.iron_casing": "Iron Casing",
-  "item.siliconery.copper_plate": "Copper Plate",
-  "item.siliconery.copper_casing": "Copper Casing",
   "item.siliconery.treetap": "Treetap",
   "item.siliconery.latex": "Latex",
   "item.siliconery.rubber": "Rubber",
   "item.siliconery.chewing_gum": "Chewing Gum",
+
   "item.siliconery.raw_zinc": "Raw Zinc",
+  "item.siliconery.raw_tin": "Raw Tin",
+  "item.siliconery.raw_silver": "Raw Silver",
+  "item.siliconery.raw_lithium": "Raw Lithium",
+  "item.siliconery.raw_indium": "Raw Indium",
+
+  "item.siliconery.iron_plate": "Iron Plate",
+  "item.siliconery.iron_casing": "Iron Casing",
+  "item.siliconery.iron_dust": "Iron Dust",
+
+  "item.siliconery.copper_plate": "Copper Plate",
+  "item.siliconery.copper_casing": "Copper Casing",
+  "item.siliconery.copper_dust": "Copper Dust",
+
   "item.siliconery.zinc_ingot": "Zinc Ingot",
   "item.siliconery.zinc_plate": "Zinc Plate",
   "item.siliconery.zinc_casing": "Zinc Casing",
-  "item.siliconery.raw_tin": "Raw Tin",
+  "item.siliconery.zinc_nugget": "Zinc Nugget",
+  "item.siliconery.zinc_dust": "Zinc Dust",
+
   "item.siliconery.tin_ingot": "Tin Ingot",
+  "item.siliconery.tin_plate": "Tin Plate",
+  "item.siliconery.tin_casing": "Tin Casing",
+  "item.siliconery.tin_nugget": "Tin Nugget",
+  "item.siliconery.tin_dust": "Tin Dust",
+
+  "item.siliconery.silver_ingot": "Silver Ingot",
+  "item.siliconery.silver_plate": "Silver Plate",
+  "item.siliconery.silver_casing": "Silver Casing",
+  "item.siliconery.silver_nugget": "Silver Nugget",
+  "item.siliconery.silver_dust": "Silver Dust",
+
+  "item.siliconery.lithium_ingot": "Lithium Ingot",
+  "item.siliconery.lithium_dust": "Lithium Dust",
+
+  "item.siliconery.indium_ingot": "Indium Ingot",
+  "item.siliconery.indium_dust": "Indium Dust",
+
+  "block.siliconery.casing": "Machine Casing",
   "block.siliconery.rubber_log": "Rubber Log",
   "block.siliconery.rubber_leaves": "Rubber Leaves",
   "block.siliconery.rubber_sapling": "Rubber Sapling",
-  "block.siliconery.casing": "Machine Casing",
+
   "block.siliconery.zinc_ore": "Zinc Ore",
   "block.siliconery.deepslate_zinc_ore": "Deepslate Zinc Ore",
+  "block.siliconery.zinc_block": "Block of Zinc",
+
   "block.siliconery.tin_ore": "Tin Ore",
-  "block.siliconery.deepslate_tin_ore": "Deepslate Tin Ore"
+  "block.siliconery.deepslate_tin_ore": "Deepslate Tin Ore",
+  "block.siliconery.tin_block": "Block of Tin",
+
+  "block.siliconery.silver_ore": "Silver Ore",
+  "block.siliconery.deepslate_silver_ore": "Deepslate Silver Ore",
+  "block.siliconery.silver_block": "Block of Silver",
+
+  "block.siliconery.lithium_ore": "Lithium Ore",
+  "block.siliconery.deepslate_lithium_ore": "Deepslate Lithium Ore",
+
+  "block.siliconery.indium_ore": "Indium Ore",
+  "block.siliconery.deepslate_indium_ore": "Deepslate Indium Ore",
+
+  "advancements.siliconery.silicon.root.title": "Silicon Awaits",
+  "advancements.siliconery.silicon.root.description": "Don't you worry: it's just sand.",
+  "advancements.siliconery.rubber.root.title": "Latex Acquired!",
+  "advancements.siliconery.rubber.root.description": "Now go smelt it...",
+  "advancements.siliconery.rubber.smelt.title": "Rubberize",
+  "advancements.siliconery.rubber.smelt.description": "The rubber is in your hands.",
+  "advancements.siliconery.rubber.gum.title": "A Thing to Chew",
+  "advancements.siliconery.rubber.gum.description": "It's useless, though you can chew it!"
 }

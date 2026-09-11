@@ -32,15 +32,18 @@ public class ModCreativeTab {
                 output.accept(ModBlockList.RUBBER_LEAVES.asItem());
                 output.accept(ModBlockList.RUBBER_LOG.asItem());
                 output.accept(ModBlockList.RUBBER_SAPLING.asItem());
-                for (ModPlateable mat : ModPlateable.values()) {
-                    output.accept(ModItemList.PLATES.get(mat));
-                    output.accept(ModItemList.CASINGS.get(mat));
-                }
                 for (ModOreable ore : ModOreable.values()) {
                     output.accept(ModItemList.RAW_ORES.get(ore));
-                    output.accept(ModItemList.INGOTS.get(ore));
                     output.accept(ModBlockList.ORES.get(ore).asItem());
                     output.accept(ModBlockList.DEEPSLATE_ORES.get(ore).asItem());
+                }
+                for (ModProcessable mat : ModProcessable.values()) {
+                    if (mat.hasIngot) output.accept(ModItemList.INGOTS.get(mat));
+                    if (mat.hasPlate) output.accept(ModItemList.PLATES.get(mat));
+                    if (mat.hasCasing) output.accept(ModItemList.CASINGS.get(mat));
+                    if (mat.hasNugget) output.accept(ModItemList.NUGGETS.get(mat));
+                    if (mat.hasDust) output.accept(ModItemList.DUSTS.get(mat));
+                    if (mat.hasBlock) output.accept(ModBlockList.BLOCKS.get(mat).asItem());
                 }
             })
             

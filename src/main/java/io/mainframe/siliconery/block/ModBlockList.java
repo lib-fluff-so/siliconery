@@ -4,6 +4,7 @@ import io.mainframe.siliconery.block.rubber.ModBlockRubberLeaves;
 import io.mainframe.siliconery.block.rubber.ModBlockRubberLog;
 import io.mainframe.siliconery.block.rubber.ModBlockRubberSapling;
 import io.mainframe.siliconery.misc.ModOreable;
+import io.mainframe.siliconery.misc.ModProcessable;
 import io.mainframe.siliconery.world.ModTreeGrowers;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -61,6 +62,20 @@ public class ModBlockList {
                             .requiresCorrectToolForDrops().strength(ore.deepslateHardness, 3.0F)
             );
             DEEPSLATE_ORES.put(ore, deepslateOreBlock);
+        }
+    }
+
+    public static final Map<ModProcessable, net.minecraft.world.level.block.Block> BLOCKS = new EnumMap<>(ModProcessable.class);
+    static {
+        for (ModProcessable mat : ModProcessable.values()) {
+            if (!mat.hasBlock) continue;
+            net.minecraft.world.level.block.Block storageBlock = registerBlock(
+                    ModBlockItemIds.storageBlock(mat.name),
+                    net.minecraft.world.level.block.Block::new,
+                    BlockBehaviour.Properties.of().mapColor(MapColor.METAL).sound(SoundType.METAL)
+                            .requiresCorrectToolForDrops().strength(5.0F, 6.0F)
+            );
+            BLOCKS.put(mat, storageBlock);
         }
     }
 

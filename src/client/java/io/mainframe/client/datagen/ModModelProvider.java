@@ -3,7 +3,7 @@ package io.mainframe.client.datagen;
 import io.mainframe.siliconery.block.ModBlockList;
 import io.mainframe.siliconery.item.ModItemList;
 import io.mainframe.siliconery.misc.ModOreable;
-import io.mainframe.siliconery.misc.ModPlateable;
+import io.mainframe.siliconery.misc.ModProcessable;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
@@ -23,15 +23,19 @@ public class ModModelProvider extends FabricModelProvider {
             blockModelGenerators.createTrivialCube(ModBlockList.ORES.get(ore));
             blockModelGenerators.createTrivialCube(ModBlockList.DEEPSLATE_ORES.get(ore));
         }
+        for (ModProcessable mat : ModProcessable.values()) {
+            if (mat.hasBlock) blockModelGenerators.createTrivialCube(ModBlockList.BLOCKS.get(mat));
+        }
     }
 
     @Override
     public void generateItemModels(net.minecraft.client.data.models.@NonNull ItemModelGenerators itemModelGenerators) {
-        for (ModPlateable mat : ModPlateable.values()) {
-            net.minecraft.world.item.Item plate = ModItemList.PLATES.get(mat);
-            itemModelGenerators.generateFlatItem(plate, ModelTemplates.FLAT_ITEM);
-            net.minecraft.world.item.Item casing = ModItemList.CASINGS.get(mat);
-            itemModelGenerators.generateFlatItem(casing, ModelTemplates.FLAT_ITEM);
+        for (ModProcessable mat : ModProcessable.values()) {
+            if (mat.hasIngot) itemModelGenerators.generateFlatItem(ModItemList.INGOTS.get(mat), ModelTemplates.FLAT_ITEM);
+            if (mat.hasPlate) itemModelGenerators.generateFlatItem(ModItemList.PLATES.get(mat), ModelTemplates.FLAT_ITEM);
+            if (mat.hasCasing) itemModelGenerators.generateFlatItem(ModItemList.CASINGS.get(mat), ModelTemplates.FLAT_ITEM);
+            if (mat.hasNugget) itemModelGenerators.generateFlatItem(ModItemList.NUGGETS.get(mat), ModelTemplates.FLAT_ITEM);
+            if (mat.hasDust) itemModelGenerators.generateFlatItem(ModItemList.DUSTS.get(mat), ModelTemplates.FLAT_ITEM);
         }
         itemModelGenerators.generateFlatItem(ModItemList.MGSI, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItemList.MGSI_POWDER, ModelTemplates.FLAT_ITEM);
@@ -44,7 +48,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItemList.CHEWING_GUM, ModelTemplates.FLAT_ITEM);
         for (ModOreable ore : ModOreable.values()) {
             itemModelGenerators.generateFlatItem(ModItemList.RAW_ORES.get(ore), ModelTemplates.FLAT_ITEM);
-            itemModelGenerators.generateFlatItem(ModItemList.INGOTS.get(ore), ModelTemplates.FLAT_ITEM);
         }
     }
 

@@ -19,5 +19,7 @@ public class ModItemIds {
     public static ResourceKey<Item> casing(String materialName) { return createItemId(materialName + "_casing"); }
     public static ResourceKey<Item> raw(String materialName) { return createItemId("raw_" + materialName); }
     public static ResourceKey<Item> ingot(String materialName) { return createItemId(materialName + "_ingot"); }
+    public static ResourceKey<Item> nugget(String materialName) { return createItemId(materialName + "_nugget"); }
+    public static ResourceKey<Item> dust(String materialName) { return createItemId(materialName + "_dust"); }
 }
 

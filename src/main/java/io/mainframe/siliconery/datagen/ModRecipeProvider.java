@@ -1,23 +1,25 @@
 package io.mainframe.siliconery.datagen;
 
 import io.mainframe.siliconery.Siliconery;
+import io.mainframe.siliconery.block.ModBlockList;
 import io.mainframe.siliconery.misc.ModOreable;
-import io.mainframe.siliconery.misc.ModPlateable;
+import io.mainframe.siliconery.misc.ModProcessable;
 import io.mainframe.siliconery.item.ModItemList;
+import io.mainframe.siliconery.item.ModItemTags;
 import io.mainframe.siliconery.recipe.ModRecipeItemTool;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.data.recipes.ShapelessRecipeBuilder;
-import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
+import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Block;
 import org.jspecify.annotations.NonNull;
 
 import java.util.concurrent.CompletableFuture;
@@ -25,6 +27,12 @@ import java.util.concurrent.CompletableFuture;
 public class ModRecipeProvider extends FabricRecipeProvider {
     public ModRecipeProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
+    }
+
+    // Ingredient.of(TagKey<Item>) doesn't exist in this mapping set — only Ingredient.of(HolderSet<Item>) —
+    // so tags need resolving against the registry lookup first.
+    private static Ingredient tagIngredient(HolderLookup.@NonNull Provider registries, TagKey<net.minecraft.world.item.Item> tag) {
+        return Ingredient.of(registries.lookupOrThrow(Registries.ITEM).getOrThrow(tag));
     }
 
     @Override
@@ -43,11 +51,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id("rubber_from_smelting")));
 
                 for (ModOreable ore : ModOreable.values()) {
+                    // Every ore has a matching ModProcessable entry of the same name (see ModProcessable).
+                    ModProcessable processable = ModProcessable.valueOf(ore.name());
                     net.minecraft.world.item.Item raw = ModItemList.RAW_ORES.get(ore);
-                    net.minecraft.world.item.Item ingot = ModItemList.INGOTS.get(ore);
+                    net.minecraft.world.item.Item ingot = ModItemList.INGOTS.get(processable);
 
                     SimpleCookingRecipeBuilder.smelting(
-                                    Ingredient.of(raw),
+                                    tagIngredient(registries, ModItemTags.rawMaterials(ore.name)),
                                     RecipeCategory.MISC,
                                     CookingBookCategory.MISC,
                                     ingot,
@@ -57,7 +67,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                             .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id(ore.name + "_ingot_from_smelting")));
 
                     SimpleCookingRecipeBuilder.blasting(
-                                    Ingredient.of(raw),
+                                    tagIngredient(registries, ModItemTags.rawMaterials(ore.name)),
                                     RecipeCategory.MISC,
                                     CookingBookCategory.MISC,
                                     ingot,
@@ -74,29 +84,72 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(ModItemList.RUBBER), has(ModItemList.RUBBER))
                         .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id("chewing_gum_from_rubber")));
 
-                for (ModPlateable mat : ModPlateable.values()) {
-                    net.minecraft.world.item.Item plate = ModItemList.PLATES.get(mat);
-                    net.minecraft.world.item.Item casing = ModItemList.CASINGS.get(mat);
+                for (ModProcessable mat : ModProcessable.values()) {
+                    if (!mat.hasPlate) continue;
+                    Item plate = ModItemList.PLATES.get(mat);
                     output.accept(
                             ResourceKey.create(Registries.RECIPE, Siliconery.id(mat.name + "_plate_from_hammer")),
                             new ModRecipeItemTool(
                                     Ingredient.of(ModItemList.FORGE_HAMMER),
-                                    Ingredient.of(mat.ingotInput),
+                                    tagIngredient(registries, ModItemTags.ingots(mat.name)),
                                     new ItemStackTemplate(plate),
                                     1
                             ),
                             null
                     );
+
+                    if (!mat.hasCasing) continue;
+                    Item casing = ModItemList.CASINGS.get(mat);
                     output.accept(
                             ResourceKey.create(Registries.RECIPE, Siliconery.id(mat.name + "_casing_from_hammer")),
                             new ModRecipeItemTool(
                                     Ingredient.of(ModItemList.FORGE_HAMMER),
-                                    Ingredient.of(plate),
+                                    tagIngredient(registries, ModItemTags.plates(mat.name)),
                                     new ItemStackTemplate(casing, 2),
                                     2
                             ),
                             null
                     );
+                }
+
+                for (ModProcessable mat : ModProcessable.values()) {
+                    if (mat.hasNugget) {
+                        Item nugget = ModItemList.NUGGETS.get(mat);
+                        Item ingot = ModItemList.INGOTS.get(mat);
+
+                        ShapelessRecipeBuilder.shapeless(registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, new ItemStackTemplate(nugget, 9))
+                                .requires(tagIngredient(registries, ModItemTags.ingots(mat.name)))
+                                .unlockedBy(getHasName(ingot), has(ingot))
+                                .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id(mat.name + "_nugget_from_ingot")));
+
+                        ShapedRecipeBuilder.shaped(registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ingot, 1)
+                                .pattern("III")
+                                .pattern("III")
+                                .pattern("III")
+                                .define('I', tagIngredient(registries, ModItemTags.nuggets(mat.name)))
+                                .unlockedBy(getHasName(nugget), has(nugget))
+                                .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id(mat.name + "_ingot_from_nugget")));
+                    }
+
+                    if (mat.hasBlock) {
+                        Block block = ModBlockList.BLOCKS.get(mat);
+                        Item ingot = ModItemList.INGOTS.get(mat);
+
+                        // NOTE: there may be a better way to do this
+                        // NOTE: block tags for blocks?
+                        ShapedRecipeBuilder.shaped(registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, block.asItem(), 1)
+                                .pattern("III")
+                                .pattern("III")
+                                .pattern("III")
+                                .define('I', tagIngredient(registries, ModItemTags.ingots(mat.name)))
+                                .unlockedBy(getHasName(ingot), has(ingot))
+                                .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id(mat.name + "_block_from_ingot")));
+
+                        ShapelessRecipeBuilder.shapeless(registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, new ItemStackTemplate(ingot, 9))
+                                .requires(block.asItem())
+                                .unlockedBy(getHasName(block.asItem()), has(block.asItem()))
+                                .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id(mat.name + "_ingot_from_block")));
+                    }
                 }
             }
         };

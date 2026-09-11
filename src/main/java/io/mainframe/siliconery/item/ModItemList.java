@@ -1,7 +1,7 @@
 package io.mainframe.siliconery.item;
 
 import io.mainframe.siliconery.misc.ModOreable;
-import io.mainframe.siliconery.misc.ModPlateable;
+import io.mainframe.siliconery.misc.ModProcessable;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 
@@ -26,26 +26,27 @@ public class ModItemList {
     public static final Item TREETAP = registerItem(ModItemIds.TREETAP, Item::new,
             new Item.Properties().durability(25).stacksTo(1));
 
-    // Should come before plateabe
+    // Raw ore item only — ore/deepslate ore blocks live in ModBlockList, both keyed off ModOreable.
     public static final Map<ModOreable, Item> RAW_ORES = new EnumMap<>(ModOreable.class);
-    public static final Map<ModOreable, Item> INGOTS = new EnumMap<>(ModOreable.class);
     static {
         for (ModOreable ore : ModOreable.values()) {
-            Item raw = registerItem(ModItemIds.raw(ore.name), Item::new, new Item.Properties());
-            RAW_ORES.put(ore, raw);
-            Item ingot = registerItem(ModItemIds.ingot(ore.name), Item::new, new Item.Properties());
-            INGOTS.put(ore, ingot);
+            RAW_ORES.put(ore, registerItem(ModItemIds.raw(ore.name), Item::new, new Item.Properties()));
         }
     }
 
-    public static final Map<ModPlateable, Item> PLATES = new EnumMap<>(ModPlateable.class);
-    public static final Map<ModPlateable, Item> CASINGS = new EnumMap<>(ModPlateable.class);
+    // Refined forms, keyed off ModProcessable — each map only gets an entry where the material's flag is set.
+    public static final Map<ModProcessable, Item> INGOTS = new EnumMap<>(ModProcessable.class);
+    public static final Map<ModProcessable, Item> PLATES = new EnumMap<>(ModProcessable.class);
+    public static final Map<ModProcessable, Item> CASINGS = new EnumMap<>(ModProcessable.class);
+    public static final Map<ModProcessable, Item> NUGGETS = new EnumMap<>(ModProcessable.class);
+    public static final Map<ModProcessable, Item> DUSTS = new EnumMap<>(ModProcessable.class);
     static {
-        for (ModPlateable mat : ModPlateable.values()) {
-            Item plate = registerItem(ModItemIds.plate(mat.name), Item::new, new Item.Properties());
-            PLATES.put(mat, plate);
-            Item casing = registerItem(ModItemIds.casing(mat.name), Item::new, new Item.Properties());
-            CASINGS.put(mat, casing);
+        for (ModProcessable mat : ModProcessable.values()) {
+            if (mat.hasIngot) INGOTS.put(mat, registerItem(ModItemIds.ingot(mat.name), Item::new, new Item.Properties()));
+            if (mat.hasPlate) PLATES.put(mat, registerItem(ModItemIds.plate(mat.name), Item::new, new Item.Properties()));
+            if (mat.hasCasing) CASINGS.put(mat, registerItem(ModItemIds.casing(mat.name), Item::new, new Item.Properties()));
+            if (mat.hasNugget) NUGGETS.put(mat, registerItem(ModItemIds.nugget(mat.name), Item::new, new Item.Properties()));
+            if (mat.hasDust) DUSTS.put(mat, registerItem(ModItemIds.dust(mat.name), Item::new, new Item.Properties()));
         }
     }
 
