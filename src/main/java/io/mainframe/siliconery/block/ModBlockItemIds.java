@@ -9,6 +9,7 @@ public class ModBlockItemIds {
     public static final BlockItemId RUBBER_LOG = createBlockItemId("rubber_log");
     public static final BlockItemId RUBBER_LEAVES = createBlockItemId("rubber_leaves");
     public static final BlockItemId RUBBER_SAPLING = createBlockItemId("rubber_sapling");
-    public static final BlockItemId ZINC_ORE = createBlockItemId("zinc_ore");
-    public static final BlockItemId DEEPSLATE_ZINC_ORE = createBlockItemId("deepslate_zinc_ore");
+
+    public static BlockItemId ore(String materialName) { return createBlockItemId(materialName + "_ore"); }
+    public static BlockItemId deepslateOre(String materialName) { return createBlockItemId("deepslate_" + materialName + "_ore"); }
 }

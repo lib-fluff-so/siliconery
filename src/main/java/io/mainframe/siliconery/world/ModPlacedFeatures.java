@@ -1,5 +1,6 @@
 package io.mainframe.siliconery.world;
 
+import io.mainframe.siliconery.misc.ModOreable;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -9,7 +10,9 @@ import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
 
+import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
 
 import static io.mainframe.siliconery.Siliconery.id;
 
@@ -51,23 +54,18 @@ public class ModPlacedFeatures {
                     id("rubber_tree_bamboo_jungle_section")
             );
 
-    public static final ResourceKey<PlacedFeature> ORE_ZINC =
-            ResourceKey.create(
-                    Registries.PLACED_FEATURE,
-                    id("ore_zinc")
-            );
+    public static final Map<ModOreable, ResourceKey<PlacedFeature>> ORES = new EnumMap<>(ModOreable.class);
+    static {
+        for (ModOreable ore : ModOreable.values()) {
+            ORES.put(ore, ResourceKey.create(Registries.PLACED_FEATURE, id("ore_" + ore.name)));
+        }
+    }
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         Holder<ConfiguredFeature<?, ?>> rubberTree =
                 context.lookup(Registries.CONFIGURED_FEATURE)
                         .getOrThrow(
                                 ModConfiguredFeatures.RUBBER_TREE
-                        );
-
-        Holder<ConfiguredFeature<?, ?>> oreZinc =
-                context.lookup(Registries.CONFIGURED_FEATURE)
-                        .getOrThrow(
-                                ModConfiguredFeatures.ORE_ZINC
                         );
 
         PlacementModifier surface =
@@ -132,16 +130,18 @@ public class ModPlacedFeatures {
                                 BiomeFilter.biome()))
         );
 
-        context.register(ORE_ZINC, new PlacedFeature(
-                oreZinc,
-                List.of(
-                        CountPlacement.of(16),
-                        InSquarePlacement.spread(),
-                        HeightRangePlacement.triangle(
-                                VerticalAnchor.absolute(-24),
-                                VerticalAnchor.absolute(128)
-                        ),
-                        BiomeFilter.biome()))
-        );
+        for (ModOreable ore : ModOreable.values()) {
+            Holder<ConfiguredFeature<?, ?>> oreFeature = context.lookup(Registries.CONFIGURED_FEATURE)
+                            .getOrThrow(ModConfiguredFeatures.ORES.get(ore));
+
+            context.register(ORES.get(ore), new PlacedFeature(
+                    oreFeature, List.of(
+                            CountPlacement.of(ore.veinsPerChunk),
+                            InSquarePlacement.spread(),
+                            HeightRangePlacement.triangle(VerticalAnchor.absolute(ore.minY),
+                                    VerticalAnchor.absolute(ore.maxY)), BiomeFilter.biome())
+                    )
+            );
+        }
     }
 }

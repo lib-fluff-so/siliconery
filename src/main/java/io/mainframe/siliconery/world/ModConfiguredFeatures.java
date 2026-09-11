@@ -1,6 +1,7 @@
 package io.mainframe.siliconery.world;
 
 import io.mainframe.siliconery.block.ModBlockList;
+import io.mainframe.siliconery.misc.ModOreable;
 import io.mainframe.siliconery.world.rubber.ModRubberFoliagePlacer;
 import io.mainframe.siliconery.world.rubber.ModRubberSapDecorator;
 import net.minecraft.core.registries.Registries;
@@ -18,7 +19,9 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlac
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
+import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
 
 public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> RUBBER_TREE =
@@ -27,11 +30,15 @@ public class ModConfiguredFeatures {
                     io.mainframe.siliconery.Siliconery.id("rubber_tree")
             );
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_ZINC =
-            ResourceKey.create(
+    public static final Map<ModOreable, ResourceKey<ConfiguredFeature<?, ?>>> ORES = new EnumMap<>(ModOreable.class);
+    static {
+        for (ModOreable ore : ModOreable.values()) {
+            ORES.put(ore, ResourceKey.create(
                     Registries.CONFIGURED_FEATURE,
-                    io.mainframe.siliconery.Siliconery.id("ore_zinc")
-            );
+                    io.mainframe.siliconery.Siliconery.id("ore_" + ore.name)
+            ));
+        }
+    }
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         context.register(
@@ -51,13 +58,15 @@ public class ModConfiguredFeatures {
         RuleTest stoneReplaceable = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest deepslateReplaceable = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
 
-        context.register(
-                ORE_ZINC,
-                new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(List.of(
-                                OreConfiguration.target(stoneReplaceable, ModBlockList.ZINC_ORE.defaultBlockState()),
-                                OreConfiguration.target(deepslateReplaceable, ModBlockList.DEEPSLATE_ZINC_ORE.defaultBlockState())
-                        ), 8)
-                )
-        );
+        for (ModOreable ore : ModOreable.values()) {
+            context.register(
+                    ORES.get(ore),
+                    new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(List.of(
+                                    OreConfiguration.target(stoneReplaceable, ModBlockList.ORES.get(ore).defaultBlockState()),
+                                    OreConfiguration.target(deepslateReplaceable, ModBlockList.DEEPSLATE_ORES.get(ore).defaultBlockState())
+                            ), ore.veinSize)
+                    )
+            );
+        }
     }
 }

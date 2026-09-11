@@ -1,6 +1,7 @@
 package io.mainframe.siliconery.datagen;
 
 import io.mainframe.siliconery.block.ModBlockItemIds;
+import io.mainframe.siliconery.misc.ModOreable;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
@@ -29,13 +30,12 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         builder(BlockTags.OVERWORLD_NATURAL_LOGS)
                 .add(ModBlockItemIds.RUBBER_LOG);
 
-        builder(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(ModBlockItemIds.ZINC_ORE)
-                .add(ModBlockItemIds.DEEPSLATE_ZINC_ORE);
-
-        builder(BlockTags.NEEDS_STONE_TOOL)
-                .add(ModBlockItemIds.ZINC_ORE)
-                .add(ModBlockItemIds.DEEPSLATE_ZINC_ORE);
+        var pickaxe = builder(BlockTags.MINEABLE_WITH_PICKAXE);
+        var stoneTool = builder(BlockTags.NEEDS_STONE_TOOL);
+        for (ModOreable ore : ModOreable.values()) {
+            pickaxe.add(ModBlockItemIds.ore(ore.name)).add(ModBlockItemIds.deepslateOre(ore.name));
+            stoneTool.add(ModBlockItemIds.ore(ore.name)).add(ModBlockItemIds.deepslateOre(ore.name));
+        }
     }
 
     @Override public @NonNull String getName() { return "Block Tags"; }

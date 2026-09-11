@@ -1,5 +1,6 @@
 package io.mainframe.siliconery.item;
 
+import io.mainframe.siliconery.misc.ModOreable;
 import io.mainframe.siliconery.misc.ModPlateable;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
@@ -24,8 +25,18 @@ public class ModItemList {
                     new FoodProperties.Builder().nutrition(0).saturationModifier(0.0F).alwaysEdible().build()));
     public static final Item TREETAP = registerItem(ModItemIds.TREETAP, Item::new,
             new Item.Properties().durability(25).stacksTo(1));
-    public static final Item RAW_ZINC = registerItem(ModItemIds.RAW_ZINC, Item::new, new Item.Properties());
-    public static final Item ZINC_INGOT = registerItem(ModItemIds.ZINC_INGOT, Item::new, new Item.Properties());
+
+    // Should come before plateabe
+    public static final Map<ModOreable, Item> RAW_ORES = new EnumMap<>(ModOreable.class);
+    public static final Map<ModOreable, Item> INGOTS = new EnumMap<>(ModOreable.class);
+    static {
+        for (ModOreable ore : ModOreable.values()) {
+            Item raw = registerItem(ModItemIds.raw(ore.name), Item::new, new Item.Properties());
+            RAW_ORES.put(ore, raw);
+            Item ingot = registerItem(ModItemIds.ingot(ore.name), Item::new, new Item.Properties());
+            INGOTS.put(ore, ingot);
+        }
+    }
 
     public static final Map<ModPlateable, Item> PLATES = new EnumMap<>(ModPlateable.class);
     public static final Map<ModPlateable, Item> CASINGS = new EnumMap<>(ModPlateable.class);

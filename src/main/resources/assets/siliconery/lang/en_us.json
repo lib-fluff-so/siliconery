@@ -26,10 +26,14 @@
   "item.siliconery.zinc_ingot": "Zinc Ingot",
   "item.siliconery.zinc_plate": "Zinc Plate",
   "item.siliconery.zinc_casing": "Zinc Casing",
+  "item.siliconery.raw_tin": "Raw Tin",
+  "item.siliconery.tin_ingot": "Tin Ingot",
   "block.siliconery.rubber_log": "Rubber Log",
   "block.siliconery.rubber_leaves": "Rubber Leaves",
   "block.siliconery.rubber_sapling": "Rubber Sapling",
   "block.siliconery.casing": "Machine Casing",
   "block.siliconery.zinc_ore": "Zinc Ore",
-  "block.siliconery.deepslate_zinc_ore": "Deepslate Zinc Ore"
+  "block.siliconery.deepslate_zinc_ore": "Deepslate Zinc Ore",
+  "block.siliconery.tin_ore": "Tin Ore",
+  "block.siliconery.deepslate_tin_ore": "Deepslate Tin Ore"
 }

@@ -3,11 +3,15 @@ package io.mainframe.siliconery.block;
 import io.mainframe.siliconery.block.rubber.ModBlockRubberLeaves;
 import io.mainframe.siliconery.block.rubber.ModBlockRubberLog;
 import io.mainframe.siliconery.block.rubber.ModBlockRubberSapling;
+import io.mainframe.siliconery.misc.ModOreable;
 import io.mainframe.siliconery.world.ModTreeGrowers;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+
+import java.util.EnumMap;
+import java.util.Map;
 
 import static io.mainframe.siliconery.block.ModBlockTools.registerBlock;
 
@@ -38,19 +42,27 @@ public class ModBlockList {
                     .instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)
     );
 
-    public static final net.minecraft.world.level.block.Block ZINC_ORE = registerBlock(
-            ModBlockItemIds.ZINC_ORE,
-            net.minecraft.world.level.block.Block::new,
-            BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE)
-                    .requiresCorrectToolForDrops().strength(3.0F, 3.0F)
-    );
+    public static final Map<ModOreable, net.minecraft.world.level.block.Block> ORES = new EnumMap<>(ModOreable.class);
+    public static final Map<ModOreable, net.minecraft.world.level.block.Block> DEEPSLATE_ORES = new EnumMap<>(ModOreable.class);
+    static {
+        for (ModOreable ore : ModOreable.values()) {
+            net.minecraft.world.level.block.Block oreBlock = registerBlock(
+                    ModBlockItemIds.ore(ore.name),
+                    net.minecraft.world.level.block.Block::new,
+                    BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE)
+                            .requiresCorrectToolForDrops().strength(ore.hardness, 3.0F)
+            );
+            ORES.put(ore, oreBlock);
 
-    public static final net.minecraft.world.level.block.Block DEEPSLATE_ZINC_ORE = registerBlock(
-            ModBlockItemIds.DEEPSLATE_ZINC_ORE,
-            net.minecraft.world.level.block.Block::new,
-            BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE).sound(SoundType.DEEPSLATE)
-                    .requiresCorrectToolForDrops().strength(4.5F, 3.0F)
-    );
+            net.minecraft.world.level.block.Block deepslateOreBlock = registerBlock(
+                    ModBlockItemIds.deepslateOre(ore.name),
+                    net.minecraft.world.level.block.Block::new,
+                    BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE).sound(SoundType.DEEPSLATE)
+                            .requiresCorrectToolForDrops().strength(ore.deepslateHardness, 3.0F)
+            );
+            DEEPSLATE_ORES.put(ore, deepslateOreBlock);
+        }
+    }
 
     @SuppressWarnings("EmptyMethod")
     public static void initialize() { }

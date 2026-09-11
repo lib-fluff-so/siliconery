@@ -2,6 +2,7 @@ package io.mainframe.client.datagen;
 
 import io.mainframe.siliconery.block.ModBlockList;
 import io.mainframe.siliconery.item.ModItemList;
+import io.mainframe.siliconery.misc.ModOreable;
 import io.mainframe.siliconery.misc.ModPlateable;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
@@ -18,8 +19,10 @@ public class ModModelProvider extends FabricModelProvider {
         blockModelGenerators.createTrivialCube(ModBlockList.CASING);
         blockModelGenerators.createTrivialBlock(ModBlockList.RUBBER_LEAVES, TexturedModel.LEAVES);
         blockModelGenerators.createCrossBlock(ModBlockList.RUBBER_SAPLING, BlockModelGenerators.PlantType.TINTED);
-        blockModelGenerators.createTrivialCube(ModBlockList.ZINC_ORE);
-        blockModelGenerators.createTrivialCube(ModBlockList.DEEPSLATE_ZINC_ORE);
+        for (ModOreable ore : ModOreable.values()) {
+            blockModelGenerators.createTrivialCube(ModBlockList.ORES.get(ore));
+            blockModelGenerators.createTrivialCube(ModBlockList.DEEPSLATE_ORES.get(ore));
+        }
     }
 
     @Override
@@ -39,8 +42,10 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItemList.LATEX, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItemList.RUBBER, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItemList.CHEWING_GUM, ModelTemplates.FLAT_ITEM);
-        itemModelGenerators.generateFlatItem(ModItemList.RAW_ZINC, ModelTemplates.FLAT_ITEM);
-        itemModelGenerators.generateFlatItem(ModItemList.ZINC_INGOT, ModelTemplates.FLAT_ITEM);
+        for (ModOreable ore : ModOreable.values()) {
+            itemModelGenerators.generateFlatItem(ModItemList.RAW_ORES.get(ore), ModelTemplates.FLAT_ITEM);
+            itemModelGenerators.generateFlatItem(ModItemList.INGOTS.get(ore), ModelTemplates.FLAT_ITEM);
+        }
     }
 
     @Override public @NonNull String getName() { return "Models"; }

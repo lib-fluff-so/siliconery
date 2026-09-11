@@ -19,19 +19,15 @@ public class ModCreativeTab {
             .icon(() -> new ItemStack(ModItemList.MGSI))
             .title(Component.translatable("creativeTab.siliconery"))
             .displayItems((_, output) -> {
-                output.accept(ModItemList.MGSI);
-                output.accept(ModItemList.MGSI_POWDER);
-                output.accept(ModItemList.SLAG);
+//                output.accept(ModItemList.MGSI);
+//                output.accept(ModItemList.MGSI_POWDER);
+//                output.accept(ModItemList.SLAG);
                 output.accept(ModItemList.FORGE_HAMMER);
                 output.accept(ModItemList.CUTTER);
                 output.accept(ModItemList.TREETAP);
                 output.accept(ModItemList.LATEX);
                 output.accept(ModItemList.RUBBER);
                 output.accept(ModItemList.CHEWING_GUM);
-                output.accept(ModItemList.RAW_ZINC);
-                output.accept(ModItemList.ZINC_INGOT);
-                output.accept(ModBlockList.ZINC_ORE.asItem());
-                output.accept(ModBlockList.DEEPSLATE_ZINC_ORE.asItem());
                 output.accept(ModBlockList.CASING.asItem());
                 output.accept(ModBlockList.RUBBER_LEAVES.asItem());
                 output.accept(ModBlockList.RUBBER_LOG.asItem());
@@ -39,6 +35,12 @@ public class ModCreativeTab {
                 for (ModPlateable mat : ModPlateable.values()) {
                     output.accept(ModItemList.PLATES.get(mat));
                     output.accept(ModItemList.CASINGS.get(mat));
+                }
+                for (ModOreable ore : ModOreable.values()) {
+                    output.accept(ModItemList.RAW_ORES.get(ore));
+                    output.accept(ModItemList.INGOTS.get(ore));
+                    output.accept(ModBlockList.ORES.get(ore).asItem());
+                    output.accept(ModBlockList.DEEPSLATE_ORES.get(ore).asItem());
                 }
             })
             

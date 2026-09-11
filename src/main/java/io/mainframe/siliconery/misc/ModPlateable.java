@@ -7,7 +7,8 @@ import net.minecraft.world.item.Items;
 public enum ModPlateable {
     IRON("iron", Items.IRON_INGOT),
     COPPER("copper", Items.COPPER_INGOT),
-    ZINC("zinc", ModItemList.ZINC_INGOT);
+    ZINC("zinc", ModItemList.INGOTS.get(ModOreable.ZINC)),
+    TIN("tin", ModItemList.INGOTS.get(ModOreable.TIN));
 
     public final String name;
     public final Item ingotInput;

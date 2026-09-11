@@ -2,6 +2,7 @@ package io.mainframe.siliconery.datagen;
 
 import io.mainframe.siliconery.block.ModBlockList;
 import io.mainframe.siliconery.item.ModItemList;
+import io.mainframe.siliconery.misc.ModOreable;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
 import net.minecraft.core.HolderLookup;
@@ -25,8 +26,11 @@ public class ModBlockLootProvider extends FabricBlockLootSubProvider {
         add(ModBlockList.RUBBER_LEAVES,
                 createLeavesDrops(ModBlockList.RUBBER_LEAVES, ModBlockList.RUBBER_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
 
-        add(ModBlockList.ZINC_ORE, block -> createOreDrop(block, ModItemList.RAW_ZINC));
-        add(ModBlockList.DEEPSLATE_ZINC_ORE, block -> createOreDrop(block, ModItemList.RAW_ZINC));
+        for (ModOreable ore : ModOreable.values()) {
+            net.minecraft.world.item.Item raw = ModItemList.RAW_ORES.get(ore);
+            add(ModBlockList.ORES.get(ore), block -> createOreDrop(block, raw));
+            add(ModBlockList.DEEPSLATE_ORES.get(ore), block -> createOreDrop(block, raw));
+        }
     }
 
     @Override public @NonNull String getName() { return "Block Loot Tables"; }

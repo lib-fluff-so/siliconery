@@ -15,10 +15,9 @@ public class ModItemIds {
     public static final ResourceKey<Item> LATEX = createItemId("latex");
     public static final ResourceKey<Item> RUBBER = createItemId("rubber");
     public static final ResourceKey<Item> CHEWING_GUM = createItemId("chewing_gum");
-    public static final ResourceKey<Item> RAW_ZINC = createItemId("raw_zinc");
-    public static final ResourceKey<Item> ZINC_INGOT = createItemId("zinc_ingot");
-
     public static ResourceKey<Item> plate(String materialName) { return createItemId(materialName + "_plate"); }
     public static ResourceKey<Item> casing(String materialName) { return createItemId(materialName + "_casing"); }
+    public static ResourceKey<Item> raw(String materialName) { return createItemId("raw_" + materialName); }
+    public static ResourceKey<Item> ingot(String materialName) { return createItemId(materialName + "_ingot"); }
 }
 

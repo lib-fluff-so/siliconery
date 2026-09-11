@@ -1,5 +1,6 @@
 package io.mainframe.siliconery.world;
 
+import io.mainframe.siliconery.misc.ModOreable;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.world.level.biome.Biomes;
@@ -44,10 +45,12 @@ public class ModWorldGeneration {
                 ModPlacedFeatures.RUBBER_TREE_BAMBOO_JUNGLE_SECTION
         );
 
-        BiomeModifications.addFeature(
-                BiomeSelectors.foundInOverworld(),
-                GenerationStep.Decoration.UNDERGROUND_ORES,
-                ModPlacedFeatures.ORE_ZINC
-        );
+        for (ModOreable ore : ModOreable.values()) {
+            BiomeModifications.addFeature(
+                    BiomeSelectors.foundInOverworld(),
+                    GenerationStep.Decoration.UNDERGROUND_ORES,
+                    ModPlacedFeatures.ORES.get(ore)
+            );
+        }
     }
 }

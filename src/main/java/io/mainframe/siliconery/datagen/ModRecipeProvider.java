@@ -1,6 +1,7 @@
 package io.mainframe.siliconery.datagen;
 
 import io.mainframe.siliconery.Siliconery;
+import io.mainframe.siliconery.misc.ModOreable;
 import io.mainframe.siliconery.misc.ModPlateable;
 import io.mainframe.siliconery.item.ModItemList;
 import io.mainframe.siliconery.recipe.ModRecipeItemTool;
@@ -41,25 +42,30 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         ).unlockedBy(getHasName(ModItemList.LATEX), has(ModItemList.LATEX))
                         .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id("rubber_from_smelting")));
 
-                SimpleCookingRecipeBuilder.smelting(
-                                Ingredient.of(ModItemList.RAW_ZINC),
-                                RecipeCategory.MISC,
-                                CookingBookCategory.MISC,
-                                ModItemList.ZINC_INGOT,
-                                0.7F,
-                                200
-                        ).unlockedBy(getHasName(ModItemList.RAW_ZINC), has(ModItemList.RAW_ZINC))
-                        .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id("zinc_ingot_from_smelting")));
+                for (ModOreable ore : ModOreable.values()) {
+                    net.minecraft.world.item.Item raw = ModItemList.RAW_ORES.get(ore);
+                    net.minecraft.world.item.Item ingot = ModItemList.INGOTS.get(ore);
 
-                SimpleCookingRecipeBuilder.blasting(
-                                Ingredient.of(ModItemList.RAW_ZINC),
-                                RecipeCategory.MISC,
-                                CookingBookCategory.MISC,
-                                ModItemList.ZINC_INGOT,
-                                0.7F,
-                                100
-                        ).unlockedBy(getHasName(ModItemList.RAW_ZINC), has(ModItemList.RAW_ZINC))
-                        .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id("zinc_ingot_from_blasting")));
+                    SimpleCookingRecipeBuilder.smelting(
+                                    Ingredient.of(raw),
+                                    RecipeCategory.MISC,
+                                    CookingBookCategory.MISC,
+                                    ingot,
+                                    0.7F,
+                                    ore.smeltingCookTime
+                            ).unlockedBy(getHasName(raw), has(raw))
+                            .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id(ore.name + "_ingot_from_smelting")));
+
+                    SimpleCookingRecipeBuilder.blasting(
+                                    Ingredient.of(raw),
+                                    RecipeCategory.MISC,
+                                    CookingBookCategory.MISC,
+                                    ingot,
+                                    0.7F,
+                                    ore.blastingCookTime
+                            ).unlockedBy(getHasName(raw), has(raw))
+                            .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id(ore.name + "_ingot_from_blasting")));
+                }
 
                 ShapelessRecipeBuilder.shapeless(registries.lookupOrThrow(Registries.ITEM), RecipeCategory.FOOD, new ItemStackTemplate(ModItemList.CHEWING_GUM, 4))
                         .requires(ModItemList.RUBBER)
