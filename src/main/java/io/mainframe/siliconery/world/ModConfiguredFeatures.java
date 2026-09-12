@@ -1,7 +1,7 @@
 package io.mainframe.siliconery.world;
 
 import io.mainframe.siliconery.block.ModBlockList;
-import io.mainframe.siliconery.misc.ModOreable;
+import io.mainframe.siliconery.generated.ModOreable;
 import io.mainframe.siliconery.world.rubber.ModRubberFoliagePlacer;
 import io.mainframe.siliconery.world.rubber.ModRubberSapDecorator;
 import net.minecraft.core.registries.Registries;

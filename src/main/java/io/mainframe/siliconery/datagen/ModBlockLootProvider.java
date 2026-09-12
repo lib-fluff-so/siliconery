@@ -2,7 +2,7 @@ package io.mainframe.siliconery.datagen;
 
 import io.mainframe.siliconery.block.ModBlockList;
 import io.mainframe.siliconery.item.ModItemList;
-import io.mainframe.siliconery.misc.ModOreable;
+import io.mainframe.siliconery.generated.ModOreable;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
 import net.minecraft.core.HolderLookup;
@@ -23,6 +23,7 @@ public class ModBlockLootProvider extends FabricBlockLootSubProvider {
         dropSelf(ModBlockList.CASING);
         dropSelf(ModBlockList.RUBBER_LOG);
         dropSelf(ModBlockList.RUBBER_SAPLING);
+        dropSelf(ModBlockList.TEMPLATE_WORKBENCH);
         add(ModBlockList.RUBBER_LEAVES,
                 createLeavesDrops(ModBlockList.RUBBER_LEAVES, ModBlockList.RUBBER_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
 

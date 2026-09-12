@@ -2,8 +2,8 @@ package io.mainframe.siliconery.datagen;
 
 import io.mainframe.siliconery.Siliconery;
 import io.mainframe.siliconery.block.ModBlockList;
-import io.mainframe.siliconery.misc.ModOreable;
-import io.mainframe.siliconery.misc.ModProcessable;
+import io.mainframe.siliconery.generated.ModOreable;
+import io.mainframe.siliconery.generated.ModProcessable;
 import io.mainframe.siliconery.item.ModItemList;
 import io.mainframe.siliconery.item.ModItemTags;
 import io.mainframe.siliconery.recipe.ModRecipeItemTool;
@@ -151,6 +151,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                                 .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id(mat.name + "_ingot_from_block")));
                     }
                 }
+                    // Cross head blank recipe
+                    ShapedRecipeBuilder.shaped(registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItemList.CROSS_HEAD_BLANK, 1)
+                        .pattern("# #")
+                        .pattern("   ")
+                        .pattern("# #")
+                        .define('#', Ingredient.of(Items.BRICK))
+                        .unlockedBy(getHasName(Items.BRICK), has(Items.BRICK))
+                        .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id("cross_head_blank_from_bricks")));
             }
         };
     }

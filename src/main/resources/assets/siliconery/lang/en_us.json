@@ -12,6 +12,7 @@
   "item.siliconery.latex": "Latex",
   "item.siliconery.rubber": "Rubber",
   "item.siliconery.chewing_gum": "Chewing Gum",
+  "item.siliconery.cross_head_blank": "Cross Head Blank",
 
   "item.siliconery.raw_zinc": "Raw Zinc",
   "item.siliconery.raw_tin": "Raw Tin",
@@ -55,6 +56,7 @@
   "block.siliconery.rubber_log": "Rubber Log",
   "block.siliconery.rubber_leaves": "Rubber Leaves",
   "block.siliconery.rubber_sapling": "Rubber Sapling",
+  "block.siliconery.template_workbench": "Template Workbench",
 
   "block.siliconery.zinc_ore": "Zinc Ore",
   "block.siliconery.deepslate_zinc_ore": "Deepslate Zinc Ore",
@@ -76,10 +78,12 @@
 
   "advancements.siliconery.silicon.root.title": "Silicon Awaits",
   "advancements.siliconery.silicon.root.description": "Don't you worry: it's just sand.",
-  "advancements.siliconery.rubber.root.title": "Latex Acquired!",
-  "advancements.siliconery.rubber.root.description": "Now go smelt it...",
+  "advancements.siliconery.adventure.root.title": "Traveling let's go!..",
+  "advancements.siliconery.adventure.root.description": "now go smelt it.",
   "advancements.siliconery.rubber.smelt.title": "Rubberize",
   "advancements.siliconery.rubber.smelt.description": "The rubber is in your hands.",
   "advancements.siliconery.rubber.gum.title": "A Thing to Chew",
-  "advancements.siliconery.rubber.gum.description": "It's useless, though you can chew it!"
+  "advancements.siliconery.rubber.gum.description": "It's useless, though you can chew it!",
+  "advancements.siliconery.adventure.indium.title": "Isn't it the India?",
+  "advancements.siliconery.adventure.indium.description": "No, it's rare tho"
 }

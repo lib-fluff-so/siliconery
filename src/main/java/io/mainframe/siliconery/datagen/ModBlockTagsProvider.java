@@ -1,8 +1,8 @@
 package io.mainframe.siliconery.datagen;
 
 import io.mainframe.siliconery.block.ModBlockItemIds;
-import io.mainframe.siliconery.misc.ModOreable;
-import io.mainframe.siliconery.misc.ModProcessable;
+import io.mainframe.siliconery.generated.ModOreable;
+import io.mainframe.siliconery.generated.ModProcessable;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
@@ -28,6 +28,25 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
         return TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("c", path));
     }
 
+    private static TagKey<Block> mineableTag(ModOreable.HarvestTool tool) {
+        return switch (tool) {
+            case PICKAXE -> BlockTags.MINEABLE_WITH_PICKAXE;
+            case AXE -> BlockTags.MINEABLE_WITH_AXE;
+            case SHOVEL -> BlockTags.MINEABLE_WITH_SHOVEL;
+            case HOE -> BlockTags.MINEABLE_WITH_HOE;
+        };
+    }
+
+    // null means no minimum tier - vanilla has no "NEEDS_WOOD_TOOL" tag, wood/gold-tier is the baseline
+    private static TagKey<Block> tierTag(ModOreable.HarvestTier tier) {
+        return switch (tier) {
+            case STONE -> BlockTags.NEEDS_STONE_TOOL;
+            case IRON -> BlockTags.NEEDS_IRON_TOOL;
+            case DIAMOND -> BlockTags.NEEDS_DIAMOND_TOOL;
+            case NONE -> null;
+        };
+    }
+
     @Override
     protected void addTags(HolderLookup.@NonNull Provider wrapperLookup) {
         builder(BlockTags.LEAVES)
@@ -40,10 +59,13 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
                 .add(ModBlockItemIds.RUBBER_LOG);
 
         var pickaxe = builder(BlockTags.MINEABLE_WITH_PICKAXE);
-        var stoneTool = builder(BlockTags.NEEDS_STONE_TOOL);
         for (ModOreable ore : ModOreable.values()) {
-            pickaxe.add(ModBlockItemIds.ore(ore.name)).add(ModBlockItemIds.deepslateOre(ore.name));
-            stoneTool.add(ModBlockItemIds.ore(ore.name)).add(ModBlockItemIds.deepslateOre(ore.name));
+            builder(mineableTag(ore.tool)).add(ModBlockItemIds.ore(ore.name)).add(ModBlockItemIds.deepslateOre(ore.name));
+
+            TagKey<Block> tierTag = tierTag(ore.tier);
+            if (tierTag != null) {
+                builder(tierTag).add(ModBlockItemIds.ore(ore.name)).add(ModBlockItemIds.deepslateOre(ore.name));
+            }
 
             builder(c("ores/" + ore.name)).add(ModBlockItemIds.ore(ore.name)).add(ModBlockItemIds.deepslateOre(ore.name));
             builder(c("ores")).add(ModBlockItemIds.ore(ore.name)).add(ModBlockItemIds.deepslateOre(ore.name));

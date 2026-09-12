@@ -2,6 +2,8 @@ package io.mainframe.siliconery;
 
 import io.mainframe.siliconery.block.ModBlockTools;
 import io.mainframe.siliconery.block.ModBlockList;
+import io.mainframe.siliconery.block.entity.ModBlockEntityTypes;
+import io.mainframe.siliconery.block.entity.ModMenuTypes;
 import io.mainframe.siliconery.item.ModItemTools;
 import io.mainframe.siliconery.item.ModItemList;
 import io.mainframe.siliconery.misc.ModCreativeTab;
@@ -32,6 +34,8 @@ public class Siliconery implements ModInitializer {
         ModItemList.initialize();
         ModBlockTools.initialize();
         ModBlockList.initialize();
+        ModBlockEntityTypes.initialize();
+        ModMenuTypes.initialize();
         ModCreativeTab.initialize();
         ModRecipeSerializers.initialize();
         ModFoliagePlacerTypes.initialize();

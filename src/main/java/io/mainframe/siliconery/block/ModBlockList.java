@@ -3,9 +3,10 @@ package io.mainframe.siliconery.block;
 import io.mainframe.siliconery.block.rubber.ModBlockRubberLeaves;
 import io.mainframe.siliconery.block.rubber.ModBlockRubberLog;
 import io.mainframe.siliconery.block.rubber.ModBlockRubberSapling;
-import io.mainframe.siliconery.misc.ModOreable;
-import io.mainframe.siliconery.misc.ModProcessable;
+import io.mainframe.siliconery.generated.ModOreable;
+import io.mainframe.siliconery.generated.ModProcessable;
 import io.mainframe.siliconery.world.ModTreeGrowers;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
@@ -17,18 +18,18 @@ import java.util.Map;
 import static io.mainframe.siliconery.block.ModBlockTools.registerBlock;
 
 public class ModBlockList {
-    public static final net.minecraft.world.level.block.Block CASING = registerBlock(
+    public static final Block CASING = registerBlock(
             ModBlockItemIds.CASING,
-            net.minecraft.world.level.block.Block::new,
+            Block::new,
             BlockBehaviour.Properties.of().sound(SoundType.METAL)
     );
-    public static final net.minecraft.world.level.block.Block RUBBER_LOG = ModBlockTools.registerBlock(
+    public static final Block RUBBER_LOG = ModBlockTools.registerBlock(
             ModBlockItemIds.RUBBER_LOG,
             ModBlockRubberLog::new,
             BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(2.0F).sound(SoundType.WOOD).randomTicks()
     );
 
-    public static final net.minecraft.world.level.block.Block RUBBER_LEAVES = ModBlockTools.registerBlock(
+    public static final Block RUBBER_LEAVES = ModBlockTools.registerBlock(
             ModBlockItemIds.RUBBER_LEAVES,
             ModBlockRubberLeaves::new,
             BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).strength(0.2F).sound(SoundType.GRASS)
@@ -36,28 +37,34 @@ public class ModBlockList {
                     .isSuffocating((_, _, _) -> false).isViewBlocking((_, _, _) -> false)
     );
 
-    public static final net.minecraft.world.level.block.Block RUBBER_SAPLING = registerBlock(
+    public static final Block TEMPLATE_WORKBENCH = registerBlock(
+            ModBlockItemIds.TEMPLATE_WORKBENCH,
+            TemplateWorkbenchBlock::new,
+            BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(2.5F).sound(SoundType.WOOD)
+    );
+
+    public static final Block RUBBER_SAPLING = registerBlock(
             ModBlockItemIds.RUBBER_SAPLING,
             props -> new ModBlockRubberSapling(ModTreeGrowers.RUBBER, props),
             BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks()
                     .instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)
     );
 
-    public static final Map<ModOreable, net.minecraft.world.level.block.Block> ORES = new EnumMap<>(ModOreable.class);
-    public static final Map<ModOreable, net.minecraft.world.level.block.Block> DEEPSLATE_ORES = new EnumMap<>(ModOreable.class);
+    public static final Map<ModOreable, Block> ORES = new EnumMap<>(ModOreable.class);
+    public static final Map<ModOreable, Block> DEEPSLATE_ORES = new EnumMap<>(ModOreable.class);
     static {
         for (ModOreable ore : ModOreable.values()) {
-            net.minecraft.world.level.block.Block oreBlock = registerBlock(
+            Block oreBlock = registerBlock(
                     ModBlockItemIds.ore(ore.name),
-                    net.minecraft.world.level.block.Block::new,
+                    Block::new,
                     BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.STONE)
                             .requiresCorrectToolForDrops().strength(ore.hardness, 3.0F)
             );
             ORES.put(ore, oreBlock);
 
-            net.minecraft.world.level.block.Block deepslateOreBlock = registerBlock(
+            Block deepslateOreBlock = registerBlock(
                     ModBlockItemIds.deepslateOre(ore.name),
-                    net.minecraft.world.level.block.Block::new,
+                    Block::new,
                     BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE).sound(SoundType.DEEPSLATE)
                             .requiresCorrectToolForDrops().strength(ore.deepslateHardness, 3.0F)
             );
@@ -65,13 +72,13 @@ public class ModBlockList {
         }
     }
 
-    public static final Map<ModProcessable, net.minecraft.world.level.block.Block> BLOCKS = new EnumMap<>(ModProcessable.class);
+    public static final Map<ModProcessable, Block> BLOCKS = new EnumMap<>(ModProcessable.class);
     static {
         for (ModProcessable mat : ModProcessable.values()) {
             if (!mat.hasBlock) continue;
-            net.minecraft.world.level.block.Block storageBlock = registerBlock(
+            Block storageBlock = registerBlock(
                     ModBlockItemIds.storageBlock(mat.name),
-                    net.minecraft.world.level.block.Block::new,
+                    Block::new,
                     BlockBehaviour.Properties.of().mapColor(MapColor.METAL).sound(SoundType.METAL)
                             .requiresCorrectToolForDrops().strength(5.0F, 6.0F)
             );

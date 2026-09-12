@@ -2,6 +2,8 @@ package io.mainframe.siliconery.misc;
 
 import io.mainframe.siliconery.Siliconery;
 import io.mainframe.siliconery.block.ModBlockList;
+import io.mainframe.siliconery.generated.ModOreable;
+import io.mainframe.siliconery.generated.ModProcessable;
 import io.mainframe.siliconery.item.ModItemList;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.minecraft.core.Registry;
@@ -28,10 +30,12 @@ public class ModCreativeTab {
                 output.accept(ModItemList.LATEX);
                 output.accept(ModItemList.RUBBER);
                 output.accept(ModItemList.CHEWING_GUM);
+                output.accept(ModItemList.CROSS_HEAD_BLANK);
                 output.accept(ModBlockList.CASING.asItem());
                 output.accept(ModBlockList.RUBBER_LEAVES.asItem());
                 output.accept(ModBlockList.RUBBER_LOG.asItem());
                 output.accept(ModBlockList.RUBBER_SAPLING.asItem());
+                output.accept(ModBlockList.TEMPLATE_WORKBENCH.asItem());
                 for (ModOreable ore : ModOreable.values()) {
                     output.accept(ModItemList.RAW_ORES.get(ore));
                     output.accept(ModBlockList.ORES.get(ore).asItem());

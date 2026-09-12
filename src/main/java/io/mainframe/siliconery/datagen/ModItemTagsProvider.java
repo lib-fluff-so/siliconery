@@ -2,8 +2,8 @@ package io.mainframe.siliconery.datagen;
 
 import io.mainframe.siliconery.item.ModItemIds;
 import io.mainframe.siliconery.item.ModItemTags;
-import io.mainframe.siliconery.misc.ModOreable;
-import io.mainframe.siliconery.misc.ModProcessable;
+import io.mainframe.siliconery.generated.ModOreable;
+import io.mainframe.siliconery.generated.ModProcessable;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;

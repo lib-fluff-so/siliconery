@@ -2,8 +2,8 @@ package io.mainframe.client.datagen;
 
 import io.mainframe.siliconery.block.ModBlockList;
 import io.mainframe.siliconery.item.ModItemList;
-import io.mainframe.siliconery.misc.ModOreable;
-import io.mainframe.siliconery.misc.ModProcessable;
+import io.mainframe.siliconery.generated.ModOreable;
+import io.mainframe.siliconery.generated.ModProcessable;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
@@ -19,6 +19,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockModelGenerators.createTrivialCube(ModBlockList.CASING);
         blockModelGenerators.createTrivialBlock(ModBlockList.RUBBER_LEAVES, TexturedModel.LEAVES);
         blockModelGenerators.createCrossBlock(ModBlockList.RUBBER_SAPLING, BlockModelGenerators.PlantType.TINTED);
+        blockModelGenerators.createTrivialCube(ModBlockList.TEMPLATE_WORKBENCH); // texture TBD, will be checkerboard for now
         for (ModOreable ore : ModOreable.values()) {
             blockModelGenerators.createTrivialCube(ModBlockList.ORES.get(ore));
             blockModelGenerators.createTrivialCube(ModBlockList.DEEPSLATE_ORES.get(ore));
@@ -46,6 +47,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItemList.LATEX, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItemList.RUBBER, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItemList.CHEWING_GUM, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItemList.CROSS_HEAD_BLANK, ModelTemplates.FLAT_ITEM);
         for (ModOreable ore : ModOreable.values()) {
             itemModelGenerators.generateFlatItem(ModItemList.RAW_ORES.get(ore), ModelTemplates.FLAT_ITEM);
         }

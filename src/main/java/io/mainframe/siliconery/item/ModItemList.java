@@ -1,7 +1,7 @@
 package io.mainframe.siliconery.item;
 
-import io.mainframe.siliconery.misc.ModOreable;
-import io.mainframe.siliconery.misc.ModProcessable;
+import io.mainframe.siliconery.generated.ModOreable;
+import io.mainframe.siliconery.generated.ModProcessable;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 
@@ -23,6 +23,7 @@ public class ModItemList {
     public static final Item CHEWING_GUM = registerItem(ModItemIds.CHEWING_GUM, Item::new,
             new Item.Properties().food(
                     new FoodProperties.Builder().nutrition(0).saturationModifier(0.0F).alwaysEdible().build()));
+    public static final Item CROSS_HEAD_BLANK = registerItem(ModItemIds.CROSS_HEAD_BLANK, Item::new, new Item.Properties());
     public static final Item TREETAP = registerItem(ModItemIds.TREETAP, Item::new,
             new Item.Properties().durability(25).stacksTo(1));
 

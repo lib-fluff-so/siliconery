@@ -1,9 +1,9 @@
 {
   "parent": "siliconery:root_adventure",
   "display": {
-    "icon": { "id": "siliconery:rubber" },
-    "title": { "translate": "advancements.siliconery.rubber.smelt.title" },
-    "description": { "translate": "advancements.siliconery.rubber.smelt.description" },
+    "icon": { "id": "siliconery:raw_indium" },
+    "title": { "translate": "advancements.siliconery.adventure.indium.title" },
+    "description": { "translate": "advancements.siliconery.adventure.indium.description" },
     "frame": "task",
     "show_toast": true,
     "announce_to_chat": true
@@ -13,7 +13,7 @@
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
-          { "items": ["siliconery:rubber"] }
+          { "items": ["siliconery:raw_indium"] }
         ]
       }
     }

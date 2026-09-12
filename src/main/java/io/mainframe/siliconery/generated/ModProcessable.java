@@ -1,4 +1,4 @@
-package io.mainframe.siliconery.misc;
+package io.mainframe.siliconery.generated;
 
 /**
  * Every processable material: what refined forms (ingot/plate/casing/block/nugget/dust)

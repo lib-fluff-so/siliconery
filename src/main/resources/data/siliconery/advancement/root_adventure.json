@@ -1,8 +1,8 @@
 {
   "display": {
     "icon": { "id": "siliconery:latex" },
-    "title": { "translate": "advancements.siliconery.rubber.root.title" },
-    "description": { "translate": "advancements.siliconery.rubber.root.description" },
+    "title": { "translate": "advancements.siliconery.adventure.root.title" },
+    "description": { "translate": "advancements.siliconery.adventure.root.description" },
     "background": "minecraft:textures/block/sand.png",
     "frame": "task",
     "show_toast": true,
