@@ -33,6 +33,8 @@ public class ModCreativeTab {
                 output.accept(ModItemList.CROSS_HEAD_BLANK);
                 output.accept(ModItemList.THREAD_BLANK);
                 output.accept(ModItemList.SCREW_TEMPLATE);
+                output.accept(ModItemList.CASING_TEMPLATE);
+                output.accept(ModItemList.SCREW);
                 output.accept(ModBlockList.CASING.asItem());
                 output.accept(ModBlockList.RUBBER_LEAVES.asItem());
                 output.accept(ModBlockList.RUBBER_LOG.asItem());

@@ -177,6 +177,21 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(ModItemList.THREAD_BLANK), has(ModItemList.THREAD_BLANK))
                         .unlockedBy(getHasName(ModItemList.CROSS_HEAD_BLANK), has(ModItemList.CROSS_HEAD_BLANK))
                         .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id("screw_template_from_blanks"))); // FIXED ID
+
+                ShapedRecipeBuilder.shaped(registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItemList.CASING_TEMPLATE, 4)
+                        .pattern("###")
+                        .pattern("# #")
+                        .pattern("###")
+                        .define('#', Ingredient.of(Items.BRICK))
+                        .unlockedBy(getHasName(Items.BRICK), has(Items.BRICK))
+                        .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id("casing_template_from_bricks")));
+
+                // Screw — 1 Iron Nugget + 1 Screw Template -> 1 Screw (vanilla 3x3 for now)
+                ShapelessRecipeBuilder.shapeless(registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, new ItemStackTemplate(ModItemList.SCREW, 1))
+                        .requires(tagIngredient(registries, ModItemTags.nuggets("iron")))
+                        .requires(ModItemList.SCREW_TEMPLATE)
+                        .unlockedBy(getHasName(ModItemList.SCREW_TEMPLATE), has(ModItemList.SCREW_TEMPLATE))
+                        .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id("screw_from_template")));
             }
         };
     }

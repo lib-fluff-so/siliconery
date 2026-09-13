@@ -50,6 +50,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItemList.CROSS_HEAD_BLANK, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItemList.THREAD_BLANK, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItemList.SCREW_TEMPLATE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItemList.CASING_TEMPLATE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItemList.SCREW, ModelTemplates.FLAT_ITEM);
         for (ModOreable ore : ModOreable.values()) {
             itemModelGenerators.generateFlatItem(ModItemList.RAW_ORES.get(ore), ModelTemplates.FLAT_ITEM);
         }
