@@ -16,6 +16,8 @@ public class ModItemIds {
     public static final ResourceKey<Item> RUBBER = createItemId("rubber");
     public static final ResourceKey<Item> CHEWING_GUM = createItemId("chewing_gum");
     public static final ResourceKey<Item> CROSS_HEAD_BLANK = createItemId("cross_head_blank");
+    public static final ResourceKey<Item> THREAD_BLANK = createItemId("thread_blank");
+    public static final ResourceKey<Item> SCREW_TEMPLATE = createItemId("screw_template");
     public static ResourceKey<Item> plate(String materialName) { return createItemId(materialName + "_plate"); }
     public static ResourceKey<Item> casing(String materialName) { return createItemId(materialName + "_casing"); }
     public static ResourceKey<Item> raw(String materialName) { return createItemId("raw_" + materialName); }

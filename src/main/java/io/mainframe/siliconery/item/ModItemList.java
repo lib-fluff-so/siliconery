@@ -24,6 +24,8 @@ public class ModItemList {
             new Item.Properties().food(
                     new FoodProperties.Builder().nutrition(0).saturationModifier(0.0F).alwaysEdible().build()));
     public static final Item CROSS_HEAD_BLANK = registerItem(ModItemIds.CROSS_HEAD_BLANK, Item::new, new Item.Properties());
+    public static final Item THREAD_BLANK = registerItem(ModItemIds.THREAD_BLANK, Item::new, new Item.Properties());
+    public static final Item SCREW_TEMPLATE = registerItem(ModItemIds.SCREW_TEMPLATE, Item::new, new Item.Properties());
     public static final Item TREETAP = registerItem(ModItemIds.TREETAP, Item::new,
             new Item.Properties().durability(25).stacksTo(1));
 

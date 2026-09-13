@@ -151,14 +151,32 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                                 .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id(mat.name + "_ingot_from_block")));
                     }
                 }
-                    // Cross head blank recipe
-                    ShapedRecipeBuilder.shaped(registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItemList.CROSS_HEAD_BLANK, 1)
-                        .pattern("# #")
-                        .pattern("   ")
-                        .pattern("# #")
+                ShapedRecipeBuilder.shaped(registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItemList.CROSS_HEAD_BLANK, 32)
+                    .pattern(" # ")
+                    .pattern("###")
+                    .pattern(" # ")
+                    .define('#', Ingredient.of(Items.BRICK))
+                    .unlockedBy(getHasName(Items.BRICK), has(Items.BRICK))
+                    .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id("cross_head_blank_from_bricks")));
+
+                ShapedRecipeBuilder.shaped(registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItemList.THREAD_BLANK, 32)
+                        .pattern("  #")
+                        .pattern(" # ")
+                        .pattern("#  ")
                         .define('#', Ingredient.of(Items.BRICK))
                         .unlockedBy(getHasName(Items.BRICK), has(Items.BRICK))
-                        .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id("cross_head_blank_from_bricks")));
+                        .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id("thread_blank_from_bricks")));
+
+                ShapelessRecipeBuilder.shapeless(
+                                registries.lookupOrThrow(Registries.ITEM),
+                                RecipeCategory.MISC,
+                                new ItemStackTemplate(ModItemList.SCREW_TEMPLATE, 1)
+                        )
+                        .requires(ModItemList.CROSS_HEAD_BLANK)
+                        .requires(ModItemList.THREAD_BLANK)
+                        .unlockedBy(getHasName(ModItemList.THREAD_BLANK), has(ModItemList.THREAD_BLANK))
+                        .unlockedBy(getHasName(ModItemList.CROSS_HEAD_BLANK), has(ModItemList.CROSS_HEAD_BLANK))
+                        .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id("screw_template_from_blanks"))); // FIXED ID
             }
         };
     }
