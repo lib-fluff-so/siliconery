@@ -6,6 +6,7 @@ import io.mainframe.siliconery.generated.ModOreable;
 import io.mainframe.siliconery.generated.ModProcessable;
 import io.mainframe.siliconery.item.ModItemList;
 import io.mainframe.siliconery.item.ModItemTags;
+import net.minecraft.tags.ItemTags;
 import io.mainframe.siliconery.recipe.ModRecipeItemTool;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -152,12 +153,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                     }
                 }
                 ShapedRecipeBuilder.shaped(registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItemList.CROSS_HEAD_BLANK, 32)
-                    .pattern(" # ")
-                    .pattern("###")
-                    .pattern(" # ")
-                    .define('#', Ingredient.of(Items.BRICK))
-                    .unlockedBy(getHasName(Items.BRICK), has(Items.BRICK))
-                    .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id("cross_head_blank_from_bricks")));
+                        .pattern(" # ")
+                        .pattern("###")
+                        .pattern(" # ")
+                        .define('#', Ingredient.of(Items.BRICK))
+                        .unlockedBy(getHasName(Items.BRICK), has(Items.BRICK))
+                        .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id("cross_head_blank_from_bricks")));
 
                 ShapedRecipeBuilder.shaped(registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItemList.THREAD_BLANK, 32)
                         .pattern("  #")
@@ -192,6 +193,25 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .requires(ModItemList.SCREW_TEMPLATE)
                         .unlockedBy(getHasName(ModItemList.SCREW_TEMPLATE), has(ModItemList.SCREW_TEMPLATE))
                         .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id("screw_from_template")));
+
+                ShapedRecipeBuilder.shaped(registries.lookupOrThrow(Registries.ITEM), RecipeCategory.TOOLS, ModItemList.FORGE_HAMMER, 1)
+                        .pattern("II ")
+                        .pattern("ISS")
+                        .pattern("II ")
+                        .define('I', tagIngredient(registries, ModItemTags.ingots("iron")))
+                        .define('S', Ingredient.of(Items.STICK))
+                        .unlockedBy(getHasName(Items.IRON_INGOT), has(ModItemTags.ingots("iron")))
+                        .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id("forge_hammer_from_iron")));
+
+                ShapedRecipeBuilder.shaped(registries.lookupOrThrow(Registries.ITEM), RecipeCategory.DECORATIONS, ModBlockList.TEMPLATE_WORKBENCH.asItem(), 1)
+                        .pattern("IWI")
+                        .pattern("WCW")
+                        .pattern("IWI")
+                        .define('I', tagIngredient(registries, ModItemTags.plates("iron")))
+                        .define('W', tagIngredient(registries, ItemTags.PLANKS))
+                        .define('C', Ingredient.of(Items.CRAFTING_TABLE))
+                        .unlockedBy(getHasName(Items.CRAFTING_TABLE), has(Items.CRAFTING_TABLE))
+                        .save(output, ResourceKey.create(Registries.RECIPE, Siliconery.id("template_workbench_from_plates")));
             }
         };
     }

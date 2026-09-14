@@ -5,6 +5,7 @@ import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import org.jspecify.annotations.NonNull;
 
 // Boilerplate-killer for Container so block entities don't have to hand-write all of it themselves
 public interface ImplementedContainer extends Container {
@@ -28,24 +29,24 @@ public interface ImplementedContainer extends Container {
     }
 
     @Override
-    default ItemStack getItem(int slot) {
+    default @NonNull ItemStack getItem(int slot) {
         return getItems().get(slot);
     }
 
     @Override
-    default ItemStack removeItem(int slot, int count) {
+    default @NonNull ItemStack removeItem(int slot, int count) {
         ItemStack result = ContainerHelper.removeItem(getItems(), slot, count);
         if (!result.isEmpty()) setChanged();
         return result;
     }
 
     @Override
-    default ItemStack removeItemNoUpdate(int slot) {
+    default @NonNull ItemStack removeItemNoUpdate(int slot) {
         return ContainerHelper.takeItem(getItems(), slot);
     }
 
     @Override
-    default void setItem(int slot, ItemStack stack) {
+    default void setItem(int slot, @NonNull ItemStack stack) {
         getItems().set(slot, stack);
         stack.limitSize(getMaxStackSize(stack));
         setChanged();
@@ -62,7 +63,7 @@ public interface ImplementedContainer extends Container {
     }
 
     @Override
-    default boolean stillValid(Player player) {
+    default boolean stillValid(@NonNull Player player) {
         return true;
     }
 }

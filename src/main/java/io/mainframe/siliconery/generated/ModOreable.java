@@ -5,7 +5,7 @@ package io.mainframe.siliconery.generated;
  */
 public enum ModOreable {
     ZINC("zinc", 16, 8, -24, 128, 2.0F, 4.5F, 200, 100, HarvestTool.PICKAXE, HarvestTier.STONE),
-    TIN("tin", 1, 16, -32, 64, 3.0F, 4.5F, 140, 70, HarvestTool.PICKAXE, HarvestTier.STONE),
+    TIN("tin", 1, 12, -32, 64, 3.0F, 4.5F, 140, 70, HarvestTool.PICKAXE, HarvestTier.STONE),
     SILVER("silver", 2, 6, -48, 32, 3.0F, 4.5F, 200, 100, HarvestTool.PICKAXE, HarvestTier.IRON),
     LITHIUM("lithium", 6, 6, -16, 100, 1.5F, 3.5F, 220, 110, HarvestTool.PICKAXE, HarvestTier.STONE),
     INDIUM("indium", 2, 4, -48, 16, 3.5F, 5.0F, 260, 130, HarvestTool.PICKAXE, HarvestTier.IRON);
