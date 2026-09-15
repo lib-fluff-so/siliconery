@@ -19,8 +19,7 @@ public enum ModOreable {
     public final float deepslateHardness;
     public final int smeltingCookTime;
     public final int blastingCookTime;
-    // What you actually have to hit it with. Wanted this configurable per-ore instead of
-    // every ore being hardcoded pickaxe+stone in the tags provider.
+    // What you actually have to hit it with.
     public final HarvestTool tool;
     public final HarvestTier tier;
 

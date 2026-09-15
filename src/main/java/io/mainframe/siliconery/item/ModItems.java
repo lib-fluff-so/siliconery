@@ -5,12 +5,13 @@ import io.mainframe.siliconery.generated.ModProcessable;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 
+import java.util.Collection;
 import java.util.EnumMap;
 import java.util.Map;
 
-import static io.mainframe.siliconery.item.ModItemTools.registerItem;
+import static io.mainframe.siliconery.item.ModItem.registerItem;
 
-public class ModItemList {
+public class ModItems {
     public static final Item MGSI = registerItem(ModItemIds.MGSI, Item::new, new Item.Properties());
     public static final Item MGSI_POWDER = registerItem(ModItemIds.MGSI_POWDER, Item::new, new Item.Properties());
     public static final Item SLAG = registerItem(ModItemIds.SLAG, Item::new, new Item.Properties());
@@ -31,7 +32,6 @@ public class ModItemList {
     public static final Item TREETAP = registerItem(ModItemIds.TREETAP, Item::new,
             new Item.Properties().durability(25).stacksTo(1));
 
-    // Raw ore item only — ore/deepslate ore blocks live in ModBlockList, both keyed off ModOreable.
     public static final Map<ModOreable, Item> RAW_ORES = new EnumMap<>(ModOreable.class);
     static {
         for (ModOreable ore : ModOreable.values()) {
@@ -39,7 +39,6 @@ public class ModItemList {
         }
     }
 
-    // Refined forms, keyed off ModProcessable — each map only gets an entry where the material's flag is set.
     public static final Map<ModProcessable, Item> INGOTS = new EnumMap<>(ModProcessable.class);
     public static final Map<ModProcessable, Item> PLATES = new EnumMap<>(ModProcessable.class);
     public static final Map<ModProcessable, Item> CASINGS = new EnumMap<>(ModProcessable.class);
@@ -57,4 +56,8 @@ public class ModItemList {
 
     @SuppressWarnings("EmptyMethod")
     public static void initialize() {}
+
+    public static Collection<Item> values() {
+        return ModItem.allRegisteredItems();
+    }
 }

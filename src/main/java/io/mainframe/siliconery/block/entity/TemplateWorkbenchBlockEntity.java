@@ -1,6 +1,7 @@
 package io.mainframe.siliconery.block.entity;
 
-import io.mainframe.siliconery.item.ModItemList;
+import io.mainframe.siliconery.block.entity.fabric.ModBlockEntityTypes;
+import io.mainframe.siliconery.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
@@ -47,10 +48,10 @@ public class TemplateWorkbenchBlockEntity extends BlockEntity implements Impleme
      */
     public int getActiveSubSlots() {
         Item base = items.get(BASE_SLOT).getItem();
-        if (base == ModItemList.SCREW_TEMPLATE) {
+        if (base == ModItems.SCREW_TEMPLATE) {
             return 1;
         }
-        if (base == ModItemList.CASING_TEMPLATE) {
+        if (base == ModItems.CASING_TEMPLATE) {
             return 2;
         }
         return 0;

@@ -12,24 +12,25 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 
+import java.util.Collection;
 import java.util.EnumMap;
 import java.util.Map;
 
-import static io.mainframe.siliconery.block.ModBlockTools.registerBlock;
+import static io.mainframe.siliconery.block.ModBlock.registerBlock;
 
-public class ModBlockList {
+public class ModBlocks {
     public static final Block CASING = registerBlock(
             ModBlockItemIds.CASING,
             Block::new,
             BlockBehaviour.Properties.of().sound(SoundType.METAL)
     );
-    public static final Block RUBBER_LOG = ModBlockTools.registerBlock(
+    public static final Block RUBBER_LOG = ModBlock.registerBlock(
             ModBlockItemIds.RUBBER_LOG,
             ModBlockRubberLog::new,
             BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(2.0F).sound(SoundType.WOOD).randomTicks()
     );
 
-    public static final Block RUBBER_LEAVES = ModBlockTools.registerBlock(
+    public static final Block RUBBER_LEAVES = ModBlock.registerBlock(
             ModBlockItemIds.RUBBER_LEAVES,
             ModBlockRubberLeaves::new,
             BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).strength(0.2F).sound(SoundType.GRASS)
@@ -88,4 +89,8 @@ public class ModBlockList {
 
     @SuppressWarnings("EmptyMethod")
     public static void initialize() { }
+
+    public static Collection<Block> values() {
+        return ModBlock.allRegisteredBlocks();
+    }
 }

@@ -3,7 +3,7 @@ package io.mainframe.siliconery.item;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 
-import static io.mainframe.siliconery.item.ModItemTools.createItemId;
+import static io.mainframe.siliconery.item.ModItem.createItemId;
 
 public class ModItemIds {
     public static final ResourceKey<Item> MGSI = createItemId("mgsi");

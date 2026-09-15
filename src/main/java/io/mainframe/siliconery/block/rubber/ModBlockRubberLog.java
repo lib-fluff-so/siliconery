@@ -1,6 +1,6 @@
 package io.mainframe.siliconery.block.rubber;
 
-import io.mainframe.siliconery.item.ModItemList;
+import io.mainframe.siliconery.item.ModItems;
 import io.mainframe.siliconery.world.Config;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -81,7 +81,7 @@ public class ModBlockRubberLog extends RotatedPillarBlock {
         if (state.getValue(HAS_SAP)
                 && state.getValue(CAN_TAP)
                 && hitResult.getDirection() == state.getValue(SAP_SIDE)
-                && stack.is(ModItemList.TREETAP)) {
+                && stack.is(ModItems.TREETAP)) {
 
             if (!level.isClientSide()) {
                 RandomSource random = level.getRandom();
@@ -93,7 +93,7 @@ public class ModBlockRubberLog extends RotatedPillarBlock {
                         pos.getX() + 0.5,
                         pos.getY() + 0.5,
                         pos.getZ() + 0.5,
-                        new ItemStack(ModItemList.LATEX, amount)
+                        new ItemStack(ModItems.LATEX, amount)
                 );
 
                 level.addFreshEntity(latex);

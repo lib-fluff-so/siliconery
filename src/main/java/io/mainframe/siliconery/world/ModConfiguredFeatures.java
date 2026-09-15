@@ -1,6 +1,6 @@
 package io.mainframe.siliconery.world;
 
-import io.mainframe.siliconery.block.ModBlockList;
+import io.mainframe.siliconery.block.ModBlocks;
 import io.mainframe.siliconery.generated.ModOreable;
 import io.mainframe.siliconery.world.rubber.ModRubberFoliagePlacer;
 import io.mainframe.siliconery.world.rubber.ModRubberSapDecorator;
@@ -45,9 +45,9 @@ public class ModConfiguredFeatures {
                 RUBBER_TREE,
                 new ConfiguredFeature<>(Feature.TREE,
                         new TreeConfiguration.TreeConfigurationBuilder(
-                                BlockStateProvider.simple(ModBlockList.RUBBER_LOG.defaultBlockState()),
+                                BlockStateProvider.simple(ModBlocks.RUBBER_LOG.defaultBlockState()),
                                 new StraightTrunkPlacer(5, 2, 0),
-                                BlockStateProvider.simple(ModBlockList.RUBBER_LEAVES.defaultBlockState()),
+                                BlockStateProvider.simple(ModBlocks.RUBBER_LEAVES.defaultBlockState()),
                                 new ModRubberFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
                                 new TwoLayersFeatureSize(1, 0, 1),
                                 BlockStateProvider.simple(net.minecraft.world.level.block.Blocks.DIRT.defaultBlockState())
@@ -62,8 +62,8 @@ public class ModConfiguredFeatures {
             context.register(
                     ORES.get(ore),
                     new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(List.of(
-                                    OreConfiguration.target(stoneReplaceable, ModBlockList.ORES.get(ore).defaultBlockState()),
-                                    OreConfiguration.target(deepslateReplaceable, ModBlockList.DEEPSLATE_ORES.get(ore).defaultBlockState())
+                                    OreConfiguration.target(stoneReplaceable, ModBlocks.ORES.get(ore).defaultBlockState()),
+                                    OreConfiguration.target(deepslateReplaceable, ModBlocks.DEEPSLATE_ORES.get(ore).defaultBlockState())
                             ), ore.veinSize)
                     )
             );

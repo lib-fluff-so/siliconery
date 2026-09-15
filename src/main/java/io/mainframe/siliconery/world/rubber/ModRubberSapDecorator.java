@@ -2,7 +2,7 @@ package io.mainframe.siliconery.world.rubber;
 
 import com.mojang.serialization.MapCodec;
 import io.mainframe.siliconery.Siliconery;
-import io.mainframe.siliconery.block.ModBlockList;
+import io.mainframe.siliconery.block.ModBlocks;
 import io.mainframe.siliconery.block.rubber.ModBlockRubberLog;
 import io.mainframe.siliconery.world.Config;
 import net.minecraft.core.BlockPos;
@@ -29,7 +29,7 @@ public class ModRubberSapDecorator extends TreeDecorator {
         for (BlockPos pos : context.logs()) {
             BlockState state = context.level().getBlockState(pos);
 
-            if (!state.is(ModBlockList.RUBBER_LOG)) { continue; }
+            if (!state.is(ModBlocks.RUBBER_LOG)) { continue; }
 
             if (random.nextFloat() >= Config.RubberLog.RUBBER_SAP_SPAWN_CHANCE) { continue; }
 

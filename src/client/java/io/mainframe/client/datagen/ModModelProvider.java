@@ -1,7 +1,7 @@
 package io.mainframe.client.datagen;
 
-import io.mainframe.siliconery.block.ModBlockList;
-import io.mainframe.siliconery.item.ModItemList;
+import io.mainframe.siliconery.block.ModBlocks;
+import io.mainframe.siliconery.item.ModItems;
 import io.mainframe.siliconery.generated.ModOreable;
 import io.mainframe.siliconery.generated.ModProcessable;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
@@ -16,44 +16,44 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
-        blockModelGenerators.createTrivialCube(ModBlockList.CASING);
-        blockModelGenerators.createTrivialBlock(ModBlockList.RUBBER_LEAVES, TexturedModel.LEAVES);
-        blockModelGenerators.createCrossBlock(ModBlockList.RUBBER_SAPLING, BlockModelGenerators.PlantType.TINTED);
-        blockModelGenerators.createTrivialCube(ModBlockList.TEMPLATE_WORKBENCH); // texture TBD, will be checkerboard for now
+        blockModelGenerators.createTrivialCube(ModBlocks.CASING);
+        blockModelGenerators.createTrivialBlock(ModBlocks.RUBBER_LEAVES, TexturedModel.LEAVES);
+        blockModelGenerators.createCrossBlock(ModBlocks.RUBBER_SAPLING, BlockModelGenerators.PlantType.TINTED);
+        blockModelGenerators.createTrivialCube(ModBlocks.TEMPLATE_WORKBENCH); // texture TBD, will be checkerboard for now
         for (ModOreable ore : ModOreable.values()) {
-            blockModelGenerators.createTrivialCube(ModBlockList.ORES.get(ore));
-            blockModelGenerators.createTrivialCube(ModBlockList.DEEPSLATE_ORES.get(ore));
+            blockModelGenerators.createTrivialCube(ModBlocks.ORES.get(ore));
+            blockModelGenerators.createTrivialCube(ModBlocks.DEEPSLATE_ORES.get(ore));
         }
         for (ModProcessable mat : ModProcessable.values()) {
-            if (mat.hasBlock) blockModelGenerators.createTrivialCube(ModBlockList.BLOCKS.get(mat));
+            if (mat.hasBlock) blockModelGenerators.createTrivialCube(ModBlocks.BLOCKS.get(mat));
         }
     }
 
     @Override
     public void generateItemModels(net.minecraft.client.data.models.@NonNull ItemModelGenerators itemModelGenerators) {
         for (ModProcessable mat : ModProcessable.values()) {
-            if (mat.hasIngot) itemModelGenerators.generateFlatItem(ModItemList.INGOTS.get(mat), ModelTemplates.FLAT_ITEM);
-            if (mat.hasPlate) itemModelGenerators.generateFlatItem(ModItemList.PLATES.get(mat), ModelTemplates.FLAT_ITEM);
-            if (mat.hasCasing) itemModelGenerators.generateFlatItem(ModItemList.CASINGS.get(mat), ModelTemplates.FLAT_ITEM);
-            if (mat.hasNugget) itemModelGenerators.generateFlatItem(ModItemList.NUGGETS.get(mat), ModelTemplates.FLAT_ITEM);
-            if (mat.hasDust) itemModelGenerators.generateFlatItem(ModItemList.DUSTS.get(mat), ModelTemplates.FLAT_ITEM);
+            if (mat.hasIngot) itemModelGenerators.generateFlatItem(ModItems.INGOTS.get(mat), ModelTemplates.FLAT_ITEM);
+            if (mat.hasPlate) itemModelGenerators.generateFlatItem(ModItems.PLATES.get(mat), ModelTemplates.FLAT_ITEM);
+            if (mat.hasCasing) itemModelGenerators.generateFlatItem(ModItems.CASINGS.get(mat), ModelTemplates.FLAT_ITEM);
+            if (mat.hasNugget) itemModelGenerators.generateFlatItem(ModItems.NUGGETS.get(mat), ModelTemplates.FLAT_ITEM);
+            if (mat.hasDust) itemModelGenerators.generateFlatItem(ModItems.DUSTS.get(mat), ModelTemplates.FLAT_ITEM);
         }
-        itemModelGenerators.generateFlatItem(ModItemList.MGSI, ModelTemplates.FLAT_ITEM);
-        itemModelGenerators.generateFlatItem(ModItemList.MGSI_POWDER, ModelTemplates.FLAT_ITEM);
-        itemModelGenerators.generateFlatItem(ModItemList.SLAG, ModelTemplates.FLAT_ITEM);
-        itemModelGenerators.generateFlatItem(ModItemList.FORGE_HAMMER, ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModelGenerators.generateFlatItem(ModItemList.CUTTER, ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModelGenerators.generateFlatItem(ModItemList.TREETAP, ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModelGenerators.generateFlatItem(ModItemList.LATEX, ModelTemplates.FLAT_ITEM);
-        itemModelGenerators.generateFlatItem(ModItemList.RUBBER, ModelTemplates.FLAT_ITEM);
-        itemModelGenerators.generateFlatItem(ModItemList.CHEWING_GUM, ModelTemplates.FLAT_ITEM);
-        itemModelGenerators.generateFlatItem(ModItemList.CROSS_HEAD_BLANK, ModelTemplates.FLAT_ITEM);
-        itemModelGenerators.generateFlatItem(ModItemList.THREAD_BLANK, ModelTemplates.FLAT_ITEM);
-        itemModelGenerators.generateFlatItem(ModItemList.SCREW_TEMPLATE, ModelTemplates.FLAT_ITEM);
-        itemModelGenerators.generateFlatItem(ModItemList.CASING_TEMPLATE, ModelTemplates.FLAT_ITEM);
-        itemModelGenerators.generateFlatItem(ModItemList.SCREW, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.MGSI, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.MGSI_POWDER, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.SLAG, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.FORGE_HAMMER, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.CUTTER, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.TREETAP, ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.LATEX, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.RUBBER, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.CHEWING_GUM, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.CROSS_HEAD_BLANK, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.THREAD_BLANK, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.SCREW_TEMPLATE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.CASING_TEMPLATE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.SCREW, ModelTemplates.FLAT_ITEM);
         for (ModOreable ore : ModOreable.values()) {
-            itemModelGenerators.generateFlatItem(ModItemList.RAW_ORES.get(ore), ModelTemplates.FLAT_ITEM);
+            itemModelGenerators.generateFlatItem(ModItems.RAW_ORES.get(ore), ModelTemplates.FLAT_ITEM);
         }
     }
 

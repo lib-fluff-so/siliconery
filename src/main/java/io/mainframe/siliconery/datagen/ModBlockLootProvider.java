@@ -1,7 +1,7 @@
 package io.mainframe.siliconery.datagen;
 
-import io.mainframe.siliconery.block.ModBlockList;
-import io.mainframe.siliconery.item.ModItemList;
+import io.mainframe.siliconery.block.ModBlocks;
+import io.mainframe.siliconery.item.ModItems;
 import io.mainframe.siliconery.generated.ModOreable;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
@@ -20,17 +20,17 @@ public class ModBlockLootProvider extends FabricBlockLootSubProvider {
 
     @Override
     public void generate() {
-        dropSelf(ModBlockList.CASING);
-        dropSelf(ModBlockList.RUBBER_LOG);
-        dropSelf(ModBlockList.RUBBER_SAPLING);
-        dropSelf(ModBlockList.TEMPLATE_WORKBENCH);
-        add(ModBlockList.RUBBER_LEAVES,
-                createLeavesDrops(ModBlockList.RUBBER_LEAVES, ModBlockList.RUBBER_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
+        dropSelf(ModBlocks.CASING);
+        dropSelf(ModBlocks.RUBBER_LOG);
+        dropSelf(ModBlocks.RUBBER_SAPLING);
+        dropSelf(ModBlocks.TEMPLATE_WORKBENCH);
+        add(ModBlocks.RUBBER_LEAVES,
+                createLeavesDrops(ModBlocks.RUBBER_LEAVES, ModBlocks.RUBBER_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
 
         for (ModOreable ore : ModOreable.values()) {
-            net.minecraft.world.item.Item raw = ModItemList.RAW_ORES.get(ore);
-            add(ModBlockList.ORES.get(ore), block -> createOreDrop(block, raw));
-            add(ModBlockList.DEEPSLATE_ORES.get(ore), block -> createOreDrop(block, raw));
+            net.minecraft.world.item.Item raw = ModItems.RAW_ORES.get(ore);
+            add(ModBlocks.ORES.get(ore), block -> createOreDrop(block, raw));
+            add(ModBlocks.DEEPSLATE_ORES.get(ore), block -> createOreDrop(block, raw));
         }
     }
 

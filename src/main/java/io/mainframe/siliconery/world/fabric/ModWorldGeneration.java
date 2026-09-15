@@ -1,6 +1,7 @@
-package io.mainframe.siliconery.world;
+package io.mainframe.siliconery.world.fabric;
 
 import io.mainframe.siliconery.generated.ModOreable;
+import io.mainframe.siliconery.world.ModPlacedFeatures;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.world.level.biome.Biomes;

@@ -1,16 +1,16 @@
 package io.mainframe.siliconery;
 
-import io.mainframe.siliconery.block.ModBlockTools;
-import io.mainframe.siliconery.block.ModBlockList;
-import io.mainframe.siliconery.block.entity.ModBlockEntityTypes;
+import io.mainframe.siliconery.block.ModBlock;
+import io.mainframe.siliconery.block.ModBlocks;
+import io.mainframe.siliconery.block.entity.fabric.ModBlockEntityTypes;
 import io.mainframe.siliconery.block.entity.ModMenuTypes;
-import io.mainframe.siliconery.item.ModItemTools;
-import io.mainframe.siliconery.item.ModItemList;
+import io.mainframe.siliconery.item.ModItem;
+import io.mainframe.siliconery.item.ModItems;
 import io.mainframe.siliconery.misc.ModCreativeTab;
 import io.mainframe.siliconery.recipe.ModRecipeSerializers;
 import io.mainframe.siliconery.world.ModFoliagePlacerTypes;
 import io.mainframe.siliconery.world.ModTreeDecoratorTypes;
-import io.mainframe.siliconery.world.ModWorldGeneration;
+import io.mainframe.siliconery.world.fabric.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;
@@ -30,10 +30,10 @@ public class Siliconery implements ModInitializer {
         LOGGER.info("Siliconery started!");
         LOGGER.info("Initializing...");
         long startTime = System.currentTimeMillis();
-        ModItemTools.initialize();
-        ModItemList.initialize();
-        ModBlockTools.initialize();
-        ModBlockList.initialize();
+        ModItem.initialize();
+        ModItems.initialize();
+        ModBlock.initialize();
+        ModBlocks.initialize();
         ModBlockEntityTypes.initialize();
         ModMenuTypes.initialize();
         ModCreativeTab.initialize();
@@ -43,9 +43,6 @@ public class Siliconery implements ModInitializer {
         ModWorldGeneration.register();
         long duration = System.currentTimeMillis() - startTime;
         LOGGER.info("Done in {} ms!", duration);
-        net.minecraft.core.registries.BuiltInRegistries.ITEM.stream()
-                .filter(item -> net.minecraft.core.registries.BuiltInRegistries.ITEM.getKey(item).getNamespace().equals(MOD_ID))
-                .forEach(item -> System.out.println("ITEM_LOG: " + net.minecraft.core.registries.BuiltInRegistries.ITEM.getKey(item).getPath()));
     }
 
     public static Identifier id(String path) { return Identifier.fromNamespaceAndPath(MOD_ID, path); }
