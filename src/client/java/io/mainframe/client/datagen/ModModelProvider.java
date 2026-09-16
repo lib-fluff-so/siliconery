@@ -24,7 +24,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockModelGenerators.createTrivialCube(ModBlocks.CASING);
         blockModelGenerators.createTrivialBlock(ModBlocks.RUBBER_LEAVES, TexturedModel.LEAVES);
         blockModelGenerators.createCrossBlock(ModBlocks.RUBBER_SAPLING, BlockModelGenerators.PlantType.TINTED);
-        blockModelGenerators.createTrivialCube(ModBlocks.TEMPLATE_WORKBENCH); // texture TBD, will be checkerboard for now
+        blockModelGenerators.createTrivialCube(ModBlocks.TEMPLATE_WORKBENCH);
         for (ModOreable ore : ModOreable.values()) {
             blockModelGenerators.createTrivialCube(ModBlocks.ORES.get(ore));
             blockModelGenerators.createTrivialCube(ModBlocks.DEEPSLATE_ORES.get(ore));
@@ -38,9 +38,9 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateItemModels(net.minecraft.client.data.models.@NonNull ItemModelGenerators itemModelGenerators) {
         for (ModProcessable mat : ModProcessable.values()) {
             if (mat.hasIngot) registerTintedFlatItem(itemModelGenerators, ModItems.INGOTS.get(mat), "generic_ingot", mat.tintColor);
-            if (mat.hasPlate) itemModelGenerators.generateFlatItem(ModItems.PLATES.get(mat), ModelTemplates.FLAT_ITEM);
-            if (mat.hasCasing) itemModelGenerators.generateFlatItem(ModItems.CASINGS.get(mat), ModelTemplates.FLAT_ITEM);
-            if (mat.hasNugget) itemModelGenerators.generateFlatItem(ModItems.NUGGETS.get(mat), ModelTemplates.FLAT_ITEM);
+            if (mat.hasPlate) registerTintedFlatItem(itemModelGenerators, ModItems.PLATES.get(mat), "generic_plate", mat.tintColor);
+            if (mat.hasCasing) registerTintedFlatItem(itemModelGenerators, ModItems.CASINGS.get(mat), "generic_casing", mat.tintColor);
+            if (mat.hasNugget) registerTintedFlatItem(itemModelGenerators, ModItems.NUGGETS.get(mat), "generic_nugget", mat.tintColor);
             if (mat.hasDust) registerTintedFlatItem(itemModelGenerators, ModItems.DUSTS.get(mat), Items.SUGAR, mat.tintColor);
         }
         itemModelGenerators.generateFlatItem(ModItems.MGSI, ModelTemplates.FLAT_ITEM);
@@ -65,8 +65,9 @@ public class ModModelProvider extends FabricModelProvider {
     /**
      * Flat item model that borrows another item's texture (so we never draw our own) and applies
      * a fixed color tint on top via the vanilla {@code minecraft:constant} tint source. No JSON
-     * touched by hand — this emits both the item model and the client item through datagen.
+     * touched by hand - this emits both the item model and the client item through datagen.
      */
+    @SuppressWarnings("SameParameterValue") // INTELLIJ SHUT UP
     private static void registerTintedFlatItem(ItemModelGenerators itemModelGenerators, Item item, Item textureSource, int color) {
         Identifier model = itemModelGenerators.createFlatItemModel(item, textureSource, ModelTemplates.FLAT_ITEM);
         itemModelGenerators.itemModelOutput.accept(item,
